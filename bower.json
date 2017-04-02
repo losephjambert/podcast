@@ -1,0 +1,26 @@
+{
+  "name": "iunu",
+  "description": "indoor agriculture automation",
+  "main": "",
+  "authors": [
+    "Marc Cantwell"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ag"
+  ],
+  "homepage": "https://github.com/iunullc/luna-web",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "animate.css": "^3.5.2"
+  }
+}

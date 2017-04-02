@@ -1,0 +1,27 @@
+{
+  "presets": [
+    "latest",
+    "react",
+    "stage-1"
+  ],
+  "plugins" : [
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ],
+  "env": {
+    "development": {
+      "presets": [
+
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-constant-elements",
+        "transform-react-remove-prop-types",
+        "transform-object-rest-spread"
+      ]
+    }
+  }
+}
