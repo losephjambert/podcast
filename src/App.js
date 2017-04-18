@@ -5,9 +5,7 @@ class App extends Component {
 
   render() {
     return (
-      <ApplicationContainer>
-        <h1>Hello Podcast</h1>
-      </ApplicationContainer>
+      <ApplicationContainer />
     );
   }
 }
