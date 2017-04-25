@@ -21,7 +21,7 @@ class RSSFeedContainer extends Component {
 
   componentWillMount() {
     axios
-      .get(`http://localhost:8080/rss`)
+      .get(`http://localhost:8080/rss`) //this is dev, we need a global config to handle the switch b/w dev/prod
       .catch(error => console.error(error))
       .then(response => this.setState({RSS: response.data.items}));
   }
