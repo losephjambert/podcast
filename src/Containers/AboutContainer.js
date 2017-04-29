@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import DynamicContentBlock from '../Components/DynamicContentBlock';
 
 class AboutContainer extends Component {
@@ -12,12 +13,10 @@ class AboutContainer extends Component {
 
   componentWillMount() {
     // let res;
-    let res = "a successful return from the server! :)";
-    if (res) {
-      this.setState({ about:[res] });
-    } else {
-      this.setState({ error: `Unfortunately, something has gone wrong and we couldn't do what you asked. Please try wrapping tinfoil around your forehead and clasping your thighs while chanting to the sky ,"I am definitely a dolphin mummy."`})
-    }
+    axios
+      .get(`https://trust-issues-api.herokuapp.com/about`)
+      .catch(error => console.error(error))
+      .then(response => this.setState({about: response.data}));
   }
 
   render() {
