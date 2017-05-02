@@ -26,7 +26,7 @@ const episode = props.RSS.map((item, index) =>
     {item.title}
   </Title>
   <URL key={index + .2}>
-    <audio controls className="player" preload="false">
+    <audio controls className="player" preload="none">
       <source src={item.enclosures[0].url} />
     </audio>
   </URL>
