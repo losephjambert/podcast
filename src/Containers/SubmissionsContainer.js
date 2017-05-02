@@ -35,7 +35,11 @@ class AboutContainer extends Component {
         body: this.state.body
       })
       .catch(error => console.error(error))
-      .then(response => this.setState({sendEmailResponse: response.data}))
+      .then(function(response){
+        // or whatever
+        alert(response.data.message);
+        document.getElementById('emailForm').reset();
+      })
   }
 
   render() {
