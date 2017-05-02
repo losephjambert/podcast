@@ -1,15 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Description = styled.p`
+  margin:50px 0px;
+  padding:5px;
+`;
 
 function DynamicContentBlock(props) {
   if (props.error) {
     return (
-      <div>
-        <p>{props.error}</p>
-      </div>
+      <Description>{props.error}</Description>
     );
   } else {
     return (
-      <p>{props.about}</p>
+      <Description>{props.about.body}</Description>
       );
   }
 }

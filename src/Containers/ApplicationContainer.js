@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import RSSFeedContainer from './RSSFeedContainer';
+import AboutContainer from './AboutContainer';
+import SubmissionContainer from './SubmissionContainer';
 
 const PodcastTitle = styled.h1`
   display: flex;
@@ -17,6 +19,10 @@ class ApplicationContainer extends Component {
       <div>
         <PodcastTitle>Trust Issues</PodcastTitle>
         <RSSFeedContainer />
+        <PodcastTitle>About</PodcastTitle>
+        <AboutContainer />
+        <PodcastTitle>Submit an Idea</PodcastTitle>
+        <SubmissionContainer />
       </div>
     );
   }

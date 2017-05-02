@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import SubmissionForm from '../Components/SubmissionForm';
 
-class AboutContainer extends Component {
+class SubmissionContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -51,4 +51,4 @@ class AboutContainer extends Component {
   }
 }
 
-export default AboutContainer;
+export default SubmissionContainer;
