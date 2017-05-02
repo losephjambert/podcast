@@ -17,7 +17,8 @@ class ApplicationContainer extends Component {
   render() {
     return (
       <div>
-        <PodcastTitle>Trust Issues</PodcastTitle>
+        <PodcastTitle>Trust</PodcastTitle>
+        <PodcastTitle>Issues</PodcastTitle>
         <RSSFeedContainer />
         <PodcastTitle>About</PodcastTitle>
         <AboutContainer />
