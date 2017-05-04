@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
 
 import RSSFeed from '../Components/RSSFeed';
-
-const Foo = styled.h2`
-  text-align: center;
-  margin-bottom: 25px;
-`;
 
 class RSSFeedContainer extends Component {
 
@@ -28,7 +22,6 @@ class RSSFeedContainer extends Component {
   render() {
     return (
       <div>
-        <Foo>👇 👇 👇 👇 👇 👇</Foo>
         <RSSFeed {...this.state}/>
       </div>
     );

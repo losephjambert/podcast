@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+import Title from '../StyleComponents/Title';
+
 import DynamicContentBlock from '../Components/DynamicContentBlock';
 
 class AboutContainer extends Component {
@@ -22,6 +26,7 @@ class AboutContainer extends Component {
   render() {
     return (
       <div>
+        <Title>About</Title>
         <DynamicContentBlock {...this.state}/>
       </div>
     );
