@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import SubmissionForm from '../Components/SubmissionForm';
 
-class AboutContainer extends Component {
+class SubmissionContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +35,11 @@ class AboutContainer extends Component {
         body: this.state.body
       })
       .catch(error => console.error(error))
-      .then(response => this.setState({sendEmailResponse: response.data}))
+      .then(function(response){
+        // or whatever
+        alert(response.data.message);
+        document.getElementById('emailForm').reset();
+      })
   }
 
   render() {
@@ -47,4 +51,4 @@ class AboutContainer extends Component {
   }
 }
 
-export default AboutContainer;
+export default SubmissionContainer;

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 import RSSFeedContainer from './RSSFeedContainer';
+import AboutContainer from './AboutContainer';
+import SubmissionContainer from './SubmissionContainer';
 
 const rotate = keyframes`
   from {
@@ -57,7 +59,11 @@ class ApplicationContainer extends Component {
           <PodcastTitle>Trust<EarthImage />Issues</PodcastTitle>
         </TitleContainer>
         <RSSFeedContainer />
-        </AppContainer>
+        <PodcastTitle>About</PodcastTitle>
+        <AboutContainer />
+        <PodcastTitle>Submit an Idea</PodcastTitle>
+        <SubmissionContainer />
+      </AppContainer>
     );
   }
 }
