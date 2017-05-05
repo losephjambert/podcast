@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import SubmissionForm from '../Components/SubmissionForm';
+import styled from 'styled-components';
+
+
+const SubmitModal = styled.div `
+  background:white;
+  width:75vw;
+  height:50vw;
+`;
 
 class SubmissionContainer extends Component {
   constructor(props) {
@@ -44,9 +52,9 @@ class SubmissionContainer extends Component {
 
   render() {
     return (
-      <div>
+      <SubmitModal>
         <SubmissionForm {...this.state}/>
-      </div>
+      </SubmitModal>
     );
   }
 }
