@@ -4,34 +4,45 @@ import styled from 'styled-components';
 const StyledForm = styled.form`
   display:flex;
   flex-direction:column;
+  height:100%;
+  padding: 15px;
 `;
 
 const StyledFormElement = styled.p`
   display:flex;
   min-width: 0;
   padding: 10px 0;
+  flex-grow:1;
 `;
 
 const StyledInput = styled.input`
   margin-left:10px;
   width:100%;
+  flex-grow:1;
+`;
+
+const SubmissionText = styled.p`
+  display:flex;
+  min-width: 0;
+  padding: 10px 0;
+  flex-grow:10;
 `;
 
 const StyledTextarea = styled.textarea`
-  height: 50px;
   width:100%;
   margin-left:10px;
 `;
 
-const StyledButton = styled.input`
+const SubmitButton = styled.input`
   padding: 10px;
+  flex-grow:1;
 `;
 
 function SubmissionForm(props) {
   return (
       <StyledForm id="emailForm" onSubmit={props.handleSubmit}>
         <StyledFormElement>
-          <label for="name">
+          <label>
             Name
           </label>
           <StyledInput
@@ -40,7 +51,7 @@ function SubmissionForm(props) {
             onChange={props.handleInputChange} />
         </StyledFormElement>
         <StyledFormElement>
-          <label for="email">
+          <label>
             Email
           </label>
           <StyledInput
@@ -48,16 +59,18 @@ function SubmissionForm(props) {
             name="email"
             onChange={props.handleInputChange} />
         </StyledFormElement>
-        <StyledFormElement>
-          <label for="body">
+        <SubmissionText>
+          <label>
             What
           </label>
           <StyledTextarea
             name="body"
             onChange={props.handleInputChange}>
           </StyledTextarea>
+        </SubmissionText>
+        <StyledFormElement>
+          <SubmitButton type="submit" value="Submit" />
         </StyledFormElement>
-        <StyledButton type="submit" value="Submit" />
       </StyledForm>
   );
 }

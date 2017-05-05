@@ -4,11 +4,11 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import Headroom from 'react-headroom';
 
 import Title from '../StyleComponents/Title';
+import Modal from '../StyleComponents/Modal';
 
 import RSSFeedContainer from './RSSFeedContainer';
 import AboutContainer from './AboutContainer';
 import SubmissionContainer from './SubmissionContainer';
-
 
 const Container = styled.div`
   font-family: "nimbus-roman", helvetica;
@@ -82,7 +82,7 @@ const EarthImage = styled.span`
   margin: 0 10px;
   transform: rotateY(0deg);
   animation: ${rotate} 10s linear infinite;
-  
+
   &:hover{animation-play-state: paused;}
 
   @media (min-width: 768px){
@@ -90,22 +90,61 @@ const EarthImage = styled.span`
   }
 `;
 
+const NavLink = styled.li `
+  display:inline;
+`;
+
+const NavList = styled.ul `
+  display:flex;
+  align-items:baseline;
+`;
+
+const Nav2 = styled.h2 `
+`;
+
 class ApplicationContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showSubmit: false,
+      showAbout: false
+    };
+  }
+
   render() {
     return (
       <Container>
         <TitleContainer>
           <Headroom disableInlineStyles>
-            <Title color='blue'>Trust Issues</Title>
+            <NavList>
+              <NavLink>
+                <Title color='blue'>Trust Issues</Title>
+              </NavLink>
+              <NavLink onClick={() => this.setState({ showAbout: false, showSubmit: !this.state.showSubmit})}>
+                <Nav2>Submit</Nav2>
+              </NavLink>
+              <NavLink onClick={() => this.setState({ showSubmit: false, showAbout: !this.state.showAbout})}>
+                <Nav2>About</Nav2>
+              </NavLink>
+            </NavList>
           </Headroom>
         </TitleContainer>
         <TaglineContainer>
           <Tagline2>a podcast about facts gone wrong.</Tagline2>
         </TaglineContainer>
         <RSSFeedContainer />
-        <AboutContainer />
-        <Title left>Submit an Idea</Title>
-        <SubmissionContainer />
+        { this.state.showAbout ?
+          <Modal>
+            <AboutContainer />
+          </Modal>
+          : null
+        }
+        { this.state.showSubmit ?
+          <Modal>
+            <SubmissionContainer />
+          </Modal>
+          : null
+        }
       </Container>
     );
   }
