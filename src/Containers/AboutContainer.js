@@ -8,8 +8,8 @@ import DynamicContentBlock from '../Components/DynamicContentBlock';
 
 const AboutModal = styled.div `
   background:white;
-  width:75vw;
-  height:50vw;
+  width:50vw;
+  height:50vh;
 `;
 
 class AboutContainer extends Component {
