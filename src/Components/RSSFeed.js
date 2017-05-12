@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReactPlayer from 'react-player'
+import Player from './Player';
 
 const List = styled.ul`
   margin: 0;
@@ -26,9 +26,11 @@ const episode = props.RSS.map((item, index) =>
     {item.title}
   </Title>
   <URL key={index + .2}>
-    <audio controls className="player" preload="none">
+{/*    <audio controls className="player" preload="none">
       <source src={item.enclosures[0].url} />
-    </audio>
+    </audio>*/}
+    <Player
+      src={item.enclosures[0].url} />
   </URL>
   <Description key={index + .1}>
     {item.description}
