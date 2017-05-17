@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Description = styled.p`
+const Description = styled.div`
   margin:50px 0px;
   padding:5px;
 `;
@@ -13,7 +13,7 @@ function DynamicContentBlock(props) {
     );
   } else {
     return (
-      <Description>{props.about.body}</Description>
+      <Description dangerouslySetInnerHTML={{__html: props.about}}></Description>
       );
   }
 }
