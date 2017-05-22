@@ -2,6 +2,14 @@ import React from 'react'
 import ReactHowler from 'react-howler'
 import raf from 'raf' // requestAnimationFrame polyfill
 
+const trackStyle = {
+  width: '250px',
+  height: '4px',
+  backgroundColor: 'black',
+  position: 'relative',
+  margin: '50px 0px'
+}
+
 class AutoPlay extends React.Component {
   constructor (props) {
     super(props)
@@ -9,8 +17,6 @@ class AutoPlay extends React.Component {
     this.state = {
       playing: false,
       loaded: false,
-      loop: false,
-      mute: false,
       volume: 1.0
     }
     this.handleToggle = this.handleToggle.bind(this)
@@ -19,8 +25,6 @@ class AutoPlay extends React.Component {
     this.handleOnPlay = this.handleOnPlay.bind(this)
     this.handleStop = this.handleStop.bind(this)
     this.renderSeekPos = this.renderSeekPos.bind(this)
-    this.handleLoopToggle = this.handleLoopToggle.bind(this)
-    this.handleMuteToggle = this.handleMuteToggle.bind(this)
   }
 
   componentWillUnmount () {
@@ -63,21 +67,10 @@ class AutoPlay extends React.Component {
     this.renderSeekPos()
   }
 
-  handleLoopToggle () {
-    this.setState({
-      loop: !this.state.loop
-    })
-  }
-
-  handleMuteToggle () {
-    this.setState({
-      mute: !this.state.mute
-    })
-  }
-
   renderSeekPos () {
+    var progress = (this.player.seek() / this.state.duration) * 250;
     this.setState({
-      seek: this.player.seek()
+      seek: progress
     })
     if (this.state.playing) {
       this._raf = raf(this.renderSeekPos)
@@ -89,47 +82,30 @@ class AutoPlay extends React.Component {
   }
 
   render () {
+    const thumbProgress = this.state.seek ? this.state.seek : 0;
+    const thumbStyle = {
+        height: '20px',
+        width: '5px',
+        backgroundColor: 'rust',
+        display: 'block',
+        position: 'absolute',
+        bottom: 'calc(50% - 10px)',
+        transform: `translate3d(${thumbProgress}px,0px,0px)`
+    }
     return (
       <div className='full-control'>
         <ReactHowler
           src={this.props.src}
           playing={this.state.playing}
-          // onLoad={this.handleOnLoad}
+          onLoad={this.handleOnLoad}
           onPlay={this.handleOnPlay}
           onEnd={this.handleOnEnd}
-          loop={this.state.loop}
-          mute={this.state.mute}
           volume={this.state.volume}
           ref={(ref) => (this.player = ref)}
         />
-
-        <p>{(this.state.loaded) ? 'Loaded' : 'Not Loaded'}</p>
-
-        <div className='toggles'>
-          <label>
-            Loop:
-            <input
-              type='checkbox'
-              checked={this.state.loop}
-              onChange={this.handleLoopToggle}
-            />
-          </label>
-          <label>
-            Mute:
-            <input
-              type='checkbox'
-              checked={this.state.mute}
-              onChange={this.handleMuteToggle}
-            />
-          </label>
+        <div style={trackStyle}>
+          <div key={thumbProgress} style={thumbStyle}></div>
         </div>
-
-        <p>
-          {'Status: '}
-          {(this.state.seek !== undefined) ? this.state.seek.toFixed(2) : '0.00'}
-          {' / '}
-          {(this.state.duration) ? this.state.duration.toFixed(2) : 'NaN'}
-        </p>
 
         <div className='volume'>
           <label>

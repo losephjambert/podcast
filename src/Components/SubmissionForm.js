@@ -48,7 +48,8 @@ function SubmissionForm(props) {
           <StyledInput
             type="text"
             name="name"
-            onChange={props.handleInputChange} />
+            onChange={props.handleInputChange}
+            required />
         </StyledFormElement>
         <StyledFormElement>
           <label>
@@ -57,7 +58,8 @@ function SubmissionForm(props) {
           <StyledInput
             type="text"
             name="email"
-            onChange={props.handleInputChange} />
+            onChange={props.handleInputChange}
+            required />
         </StyledFormElement>
         <SubmissionText>
           <label>

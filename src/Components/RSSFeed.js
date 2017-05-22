@@ -19,28 +19,32 @@ const URL = styled.li`
   font-size: 18px;
 `;
 
+
 function RSSFeed(props) {
-const episode = props.RSS.map((item, index) =>
-  <span>
-  <Title key={index}>
-    {item.title}
-  </Title>
-  <URL key={index + .2}>
-{/*    <audio controls className="player" preload="none">
-      <source src={item.enclosures[0].url} />
-    </audio>*/}
-    <Player
-      src={item.enclosures[0].url} />
-  </URL>
-  <Description key={index + .1}>
-    {item.description}
-  </Description>
-  </span>
-);
- return (
+  const episode = props.RSS.map((item, index) =>
+    <span>
+    <Title key={index} onClick={() => { props.playEpisode(item)}} >
+      {item.title}
+    </Title>
+
+    <Description key={index + .1}>
+      {item.description}
+    </Description>
+    </span>
+  );
+  return (
+      <div>
+      { props.selectedEpisode.enclosures ?
+        <URL>
+          <Player
+            src={props.selectedEpisode.enclosures[0].url} />
+        </URL>
+        : null
+      }
       <List>
         {episode}
       </List>
+      </div>
       );
 }
 
