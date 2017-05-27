@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import commonmark from 'commonmark';
+import marked from 'marked';
 
 import Title from '../StyleComponents/Title';
 
@@ -24,8 +24,8 @@ class AboutContainer extends Component {
   }
 
   parseMarkdown(md){
-    var reader = new commonmark.Parser();
-    var writer = new commonmark.HtmlRenderer();
+    var reader = new marked.Parser();
+    var writer = new marked.HtmlRenderer();
     var parsed = reader.parse(md);
     var result = writer.render(parsed);
     return result;
