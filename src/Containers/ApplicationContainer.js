@@ -7,6 +7,7 @@ import EpisodesContainer from './EpisodesContainer';
 import AboutContainer from './AboutContainer';
 import SubmissionContainer from './SubmissionContainer';
 import FooterContainer from './FooterContainer';
+import BackgroundContainer from './BackgroundContainer';
 
 class ApplicationContainer extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class ApplicationContainer extends Component {
         <AboutContainer /> 
         <SubmissionContainer />
         <FooterContainer />
+        <BackgroundContainer />
       </Wrap>
     );
   }
