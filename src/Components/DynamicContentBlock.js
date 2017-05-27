@@ -4,9 +4,15 @@ import styled from 'styled-components';
 const Description = styled.div`
   margin:50px 0px;
   padding:5px;
+
+  p{
+    margin-bottom: 15px;
+    color: red;
+  }
 `;
 
 function DynamicContentBlock(props) {
+
   if (props.error) {
     return (
       <Description>{props.error}</Description>

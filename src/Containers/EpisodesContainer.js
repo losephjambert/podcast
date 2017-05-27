@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import RSSFeed from '../Components/RSSFeed';
+import Episode from '../Components/Episode';
 
-class RSSFeedContainer extends Component {
+class EpisodesContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -35,10 +35,10 @@ class RSSFeedContainer extends Component {
   render() {
     return (
       <div>
-        <RSSFeed {...this.state}/>
+        <Episode {...this.state}/>
       </div>
     );
   }
 }
 
-export default RSSFeedContainer;
+export default EpisodesContainer;

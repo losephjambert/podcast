@@ -6,7 +6,7 @@ import Headroom from 'react-headroom';
 import Title from '../StyleComponents/Title';
 import Modal from '../StyleComponents/Modal';
 
-import RSSFeedContainer from './RSSFeedContainer';
+import EpisodesContainer from './EpisodesContainer';
 import AboutContainer from './AboutContainer';
 import SubmissionContainer from './SubmissionContainer';
 
@@ -132,7 +132,7 @@ class ApplicationContainer extends Component {
         <TaglineContainer>
           <Tagline2>a podcast about facts gone wrong.</Tagline2>
         </TaglineContainer>
-        <RSSFeedContainer />
+        <EpisodesContainer />
         { this.state.showAbout ?
           <Modal>
             <AboutContainer />

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "commonmark": "^0.27.0",
     "marked": "^0.3.6",
     "normalize.css": "^6.0.0",
     "react": "^15.5.4",
