@@ -109,6 +109,7 @@ class SubmissionContainer extends Component {
   render() {
     return (
       <SubmitModal>
+        <p>{ this.props.description }</p>
         <SubmissionForm {...this.state}/>
       </SubmitModal>
     );

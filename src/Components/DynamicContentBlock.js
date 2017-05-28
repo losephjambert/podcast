@@ -19,7 +19,7 @@ function DynamicContentBlock(props) {
     );
   } else {
     return (
-      <Description dangerouslySetInnerHTML={{__html: props.about}}></Description>
+      <Description dangerouslySetInnerHTML={{__html: props.body}}></Description>
       );
   }
 }
