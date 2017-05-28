@@ -20,7 +20,7 @@ const URL = styled.li`
 `;
 
 
-function RSSFeed(props) {
+function Episode(props) {
   const episode = props.RSS.map((item, index) =>
     <span>
     <Title key={index} onClick={() => { props.playEpisode(item)}} >
@@ -48,4 +48,4 @@ function RSSFeed(props) {
       );
 }
 
-export default RSSFeed;
+export default Episode;
