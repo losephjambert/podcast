@@ -27,6 +27,12 @@ class AutoPlay extends React.Component {
     this.renderSeekPos = this.renderSeekPos.bind(this)
   }
 
+  componentDidUpdate(prevProps){
+    if(this.props.src !== prevProps.src) {
+      this.handleToggle()
+    }
+  }
+
   componentWillUnmount () {
     this.clearRAF()
   }
@@ -86,7 +92,7 @@ class AutoPlay extends React.Component {
     const thumbStyle = {
         height: '20px',
         width: '5px',
-        backgroundColor: 'rust',
+        backgroundColor: 'pink',
         display: 'block',
         position: 'absolute',
         bottom: 'calc(50% - 10px)',
@@ -94,15 +100,19 @@ class AutoPlay extends React.Component {
     }
     return (
       <div className='full-control'>
-        <ReactHowler
-          src={this.props.src}
-          playing={this.state.playing}
-          onLoad={this.handleOnLoad}
-          onPlay={this.handleOnPlay}
-          onEnd={this.handleOnEnd}
-          volume={this.state.volume}
-          ref={(ref) => (this.player = ref)}
-        />
+        {
+          this.props.src.enclosures ?
+          <ReactHowler
+            src={this.props.src.enclosures[0].url}
+            playing={this.state.playing}
+            onLoad={this.handleOnLoad}
+            onPlay={this.handleOnPlay}
+            onEnd={this.handleOnEnd}
+            volume={this.state.volume}
+            ref={(ref) => (this.player = ref)}
+          />
+          : null
+        }
         <div style={trackStyle}>
           <div key={thumbProgress} style={thumbStyle}></div>
         </div>

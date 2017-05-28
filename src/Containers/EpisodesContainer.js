@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
 
-import Episode from '../Components/Episode';
+const List = styled.ul`
+  margin: 0;
+  padding: 0;
+`;
+const Title = styled.li`
+  padding: 10px 0;
+  font-size: 28px;
+`;
+const Description = styled.li`
+  padding: 5px 0;
+  font-size: 18px;
+`;
 
 class EpisodesContainer extends Component {
 
@@ -9,33 +21,34 @@ class EpisodesContainer extends Component {
     super(props);
     this.state = {
       RSS: [],
-      selectedEpisode: {},
-      isPlaying: false,
-      isPaused: true,
       error: null,
-      playEpisode: this.playEpisode.bind(this)
     } ;
-  }
-
-  playEpisode(episode) {
-    this.setState({selectedEpisode: episode})
   }
 
   componentWillMount() {
     axios
       .get(`https://trust-issues-api.herokuapp.com/rss`)
       .catch(error => console.error(error))
-      .then(response => this.setState({RSS: response.data.items, selectedEpisode: response.data.items[0]}));
-  }
-
-  componentDidUpdate() {
-    console.log(this.state.selectedEpisode)
+      .then(response => this.setState({RSS: response.data.items}))
   }
 
   render() {
+    const episode = this.state.RSS.map((item, index) =>
+      <span>
+      <Title key={index} onClick={() => { this.props.playEpisode(item) } }>
+        {item.title}
+      </Title>
+
+      <Description key={index + .1}>
+        {item.description}
+      </Description>
+      </span>
+    );
     return (
       <div>
-        <Episode {...this.state}/>
+        <List>
+          {episode}
+        </List>
       </div>
     );
   }
