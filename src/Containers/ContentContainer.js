@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Wrap from '../StyleComponents/Wrap';
 import axios from 'axios';
 
@@ -13,10 +12,16 @@ import BackgroundContainer from './BackgroundContainer';
 class ContentContainer extends Component {
   constructor(props) {
     super(props);
+    this.playEpisode = this.playEpisode.bind(this);
+    this.showRegion = this.showRegion.bind(this);
+
     this.state = {
-      "showAbout": false,
-      "showSubmission": true,
-      "showEpisodes": false,
+      "navItems" : [
+        "episodes",
+        "submit",
+        "about"
+      ],
+      "selectedRegion": "episodes",
       "playingEpisode": {},
       "content": {
         "about": {
@@ -40,8 +45,7 @@ class ContentContainer extends Component {
           "body":""
         },
       }
-    },
-    this.playEpisode = this.playEpisode.bind(this)
+    };
   }
 
   componentWillMount(){
@@ -51,26 +55,40 @@ class ContentContainer extends Component {
       .then(response => this.setState({ content: response.data }))
   }
 
+  componentDidUpdate(){
+    console.log("componentDidUpdate",this.state.selectedRegion)
+  }
+
   playEpisode(selectedEpisode) {
-    console.log(selectedEpisode)
+    console.log(`selected episode: ${selectedEpisode}`)
     this.setState({
       playingEpisode: selectedEpisode
+    })
+  }
+
+  showRegion(selectedRegion,index) { 
+    this.setState({
+      selectedRegion: this.state.navItems[index]
     })
   }
 
   render() {
     return (
       <Wrap>
-        <NavContainer />
+        <NavContainer
+          showRegion={ this.showRegion }
+          navItems={ this.state.navItems }
+          selectedRegion={ this.state.selectedRegion }/>
         <EpisodesContainer playEpisode={ this.playEpisode } />
-        <AboutContainer body={ this.state.content.about.body } />
         <SubmissionContainer description={ this.state.content.submissionDescription.body } />
+        <AboutContainer body={ this.state.content.about.body } />
         <PlayerContainer playingEpisode={ this.state.playingEpisode } />
+
         <BackgroundContainer
           marquee={ this.state.content.marquee }
           backgroundLeft={ this.state.content.backgroundLeft }
-          backgroundRight= { this.state.content.backgroundRight }
-          backgroundMiddle= { this.state.content.backgroundMiddle } />
+          backgroundRight={ this.state.content.backgroundRight }
+          backgroundMiddle={ this.state.content.backgroundMiddle } />
       </Wrap>
     )
   }
