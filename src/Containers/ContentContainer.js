@@ -70,6 +70,22 @@ class ContentContainer extends Component {
     })
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    if(nextState.playingEpisode.title) {
+      this.state.content.marquee = {
+        "body": nextState.playingEpisode.title
+      }
+      this.state.content.backgroundLeft = {
+        "headline": nextState.playingEpisode.title,
+        "body": nextState.playingEpisode.description
+      }
+      this.state.content.backgroundRight = {
+        headline: nextState.playingEpisode.title,
+        body: nextState.playingEpisode.description
+      }
+    }
+  }
+
   showRegion(selectedRegion,index) {
     this.setState({
       selectedRegion: this.state.navItems[index]
@@ -89,6 +105,7 @@ class ContentContainer extends Component {
         <PlayerContainer playingEpisode={ this.state.playingEpisode } />
 
         <BackgroundContainer
+          playingEpisode={ this.state.playingEpisode }
           marquee={ this.state.content.marquee }
           backgroundLeft={ this.state.content.backgroundLeft }
           backgroundRight={ this.state.content.backgroundRight }

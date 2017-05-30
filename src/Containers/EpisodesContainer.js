@@ -24,7 +24,7 @@ class EpisodesContainer extends Component {
     super(props);
     this.state = {
       error: null,
-    } ;
+    };
   }
 
   render() {
