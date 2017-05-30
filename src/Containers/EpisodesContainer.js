@@ -30,7 +30,7 @@ class EpisodesContainer extends Component {
   render() {
     const episode = this.props.RSS.map((item, index) =>
       <span key={item.title}>
-      <Title key={index} onClick={() => { this.props.playEpisode(item) } }>
+      <Title key={index} onClick={() => { this.props.playEpisode(item, index) } }>
         {item.title}
       </Title>
 

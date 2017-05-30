@@ -64,7 +64,8 @@ class ContentContainer extends Component {
     console.log("componentDidUpdate",this.state.selectedRegion)
   }
 
-  playEpisode(selectedEpisode) {
+  playEpisode(selectedEpisode, index) {
+    selectedEpisode.number = (this.state.RSS.length - index)
     this.setState({
       playingEpisode: selectedEpisode
     })
@@ -76,11 +77,11 @@ class ContentContainer extends Component {
         "body": nextState.playingEpisode.title
       }
       this.state.content.backgroundLeft = {
-        "headline": nextState.playingEpisode.title,
+        "headline": `Episode ${nextState.playingEpisode.number}`,
         "body": nextState.playingEpisode.description
       }
       this.state.content.backgroundRight = {
-        headline: nextState.playingEpisode.title,
+        headline: `Episode ${nextState.playingEpisode.number}`,
         body: nextState.playingEpisode.description
       }
     }
