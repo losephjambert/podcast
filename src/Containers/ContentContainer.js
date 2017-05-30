@@ -22,6 +22,7 @@ class ContentContainer extends Component {
         "about"
       ],
       "selectedRegion": "episodes",
+      "RSS":[],
       "playingEpisode": {},
       "content": {
         "about": {
@@ -49,6 +50,10 @@ class ContentContainer extends Component {
   }
 
   componentWillMount(){
+    axios
+      .get(`https://trust-issues-api.herokuapp.com/rss`)
+      .catch(error => console.error(error))
+      .then(response => this.setState({RSS: response.data.items}))
     axios
       .get(`https://trust-issues-api.herokuapp.com/content`)
       .catch(error => console.error(error))
@@ -78,7 +83,7 @@ class ContentContainer extends Component {
           showRegion={ this.showRegion }
           navItems={ this.state.navItems }
           selectedRegion={ this.state.selectedRegion }/>
-        <EpisodesContainer playEpisode={ this.playEpisode } />
+        <EpisodesContainer RSS={ this.state.RSS } playEpisode={ this.playEpisode } />
         <SubmissionContainer description={ this.state.content.submissionDescription.body } />
         <AboutContainer body={ this.state.content.about.body } />
         <PlayerContainer playingEpisode={ this.state.playingEpisode } />

@@ -23,20 +23,12 @@ class EpisodesContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      RSS: [],
       error: null,
     } ;
   }
 
-  componentWillMount() {
-    axios
-      .get(`https://trust-issues-api.herokuapp.com/rss`)
-      .catch(error => console.error(error))
-      .then(response => this.setState({RSS: response.data.items}))
-  }
-
   render() {
-    const episode = this.state.RSS.map((item, index) =>
+    const episode = this.props.RSS.map((item, index) =>
       <span key={item.title}>
       <Title key={index} onClick={() => { this.props.playEpisode(item) } }>
         {item.title}
