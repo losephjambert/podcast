@@ -12,6 +12,7 @@ const Button = styled.button`
     'purple' : 'white'};
   color: ${props => props.selected ?
     'white' : 'purple'};
+  transition: .33s;
 `;
 
 

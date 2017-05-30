@@ -24,7 +24,7 @@ class NavContainer extends Component {
         <Button
           selected={item === this.props.selectedRegion ? true : false}
           key={ index }
-          onClick={() => { this.props.showRegion(item ,index) } }>
+          onClick={() => { this.props.showRegion(item,index) } }>
           {item} -- {item === this.props.selectedRegion ? 'Yep' : 'Nope'}
         </Button>
       </NavItem>

@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+import Button from '../StyleComponents/Button';
 
-const List = styled.ul`
-  margin: 0;
-  padding: 0;
-`;
 const Title = styled.li`
   padding: 10px 0;
   font-size: 28px;
@@ -15,43 +11,27 @@ const Description = styled.li`
   font-size: 18px;
 `;
 
-const Episodes = styled.div`
+const Episodes = styled.section`
 `;
 
 class EpisodesContainer extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      RSS: [],
-      error: null,
-    } ;
-  }
-
-  componentWillMount() {
-    axios
-      .get(`https://trust-issues-api.herokuapp.com/rss`)
-      .catch(error => console.error(error))
-      .then(response => this.setState({RSS: response.data.items}))
-  }
-
   render() {
-    const episode = this.state.RSS.map((item, index) =>
-      <span key={item.title}>
-      <Title key={index} onClick={() => { this.props.playEpisode(item) } }>
-        {item.title}
-      </Title>
-
-      <Description key={index + .1}>
-        {item.description}
-      </Description>
-      </span>
+    const episode = this.props.RSS.map((item, index) =>
+      <ul key={index + 0.1}>
+        <Title key={index}>
+          {item.title}
+        </Title>
+        <Description key={index + 0.2}>
+          {item.description}
+        </Description>
+        <Button key={index + 0.3} onClick={() => { this.props.playEpisode(item) } }>
+          Play Episode
+        </Button>
+      </ul>
     );
     return (
-      <Episodes >
-        <List>
-          {episode}
-        </List>
+      <Episodes>
+        {episode}
       </Episodes>
     );
   }
