@@ -15,6 +15,9 @@ const Description = styled.li`
   font-size: 18px;
 `;
 
+const Episodes = styled.div`
+`;
+
 class EpisodesContainer extends Component {
 
   constructor(props) {
@@ -34,7 +37,7 @@ class EpisodesContainer extends Component {
 
   render() {
     const episode = this.state.RSS.map((item, index) =>
-      <span>
+      <span key={item.title}>
       <Title key={index} onClick={() => { this.props.playEpisode(item) } }>
         {item.title}
       </Title>
@@ -45,11 +48,11 @@ class EpisodesContainer extends Component {
       </span>
     );
     return (
-      <div>
+      <Episodes >
         <List>
           {episode}
         </List>
-      </div>
+      </Episodes>
     );
   }
 }
