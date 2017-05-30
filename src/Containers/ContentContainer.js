@@ -48,11 +48,10 @@ class ContentContainer extends Component {
     axios
       .get(`https://trust-issues-api.herokuapp.com/content`)
       .catch(error => console.error(error))
-      .then(response => this.setState({ content: response.data }))
+      .then(response => this.setState({ content: response.data} ))
   }
 
   playEpisode(selectedEpisode) {
-    console.log(selectedEpisode)
     this.setState({
       playingEpisode: selectedEpisode
     })

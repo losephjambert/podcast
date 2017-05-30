@@ -3,7 +3,6 @@ import axios from 'axios';
 import SubmissionForm from '../Components/SubmissionForm';
 import styled from 'styled-components';
 
-
 const SubmitModal = styled.div `
   background:white;
   width:50vw;

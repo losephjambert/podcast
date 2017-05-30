@@ -16,14 +16,14 @@ class AboutContainer extends Component {
     super(props);
     this.state = {
       error: null
-    } ;
+    };
   }
 
   render() {
     return (
       <AboutModal>
         <Title>About</Title>
-        <DynamicContentBlock body={this.props.body}/>
+        <DynamicContentBlock body={ this.props.body }/>
       </AboutModal>
     );
   }
