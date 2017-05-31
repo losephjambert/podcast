@@ -8,7 +8,7 @@ const StyledForm = styled.form`
   padding: 15px;
 `;
 
-const StyledFormElement = styled.p`
+const StyledFormElement = styled.div`
   display:flex;
   min-width: 0;
   padding: 10px 0;
@@ -21,7 +21,7 @@ const StyledInput = styled.input`
   flex-grow:1;
 `;
 
-const SubmissionText = styled.p`
+const SubmissionText = styled.div`
   display:flex;
   min-width: 0;
   padding: 10px 0;
@@ -40,17 +40,8 @@ const SubmitButton = styled.input`
 
 function SubmissionForm(props) {
   return (
-      <StyledForm id="emailForm" onSubmit={props.handleSubmit}>
-        <StyledFormElement>
-          <label>
-            Name
-          </label>
-          <StyledInput
-            type="text"
-            name="name"
-            onChange={props.handleInputChange}
-            required />
-        </StyledFormElement>
+      <StyledForm id="emailForm" onSubmit={ props.handleSubmit }>
+        <span className={ props.submissionResponse.class }>{ props.submissionResponse.message }</span>
         <StyledFormElement>
           <label>
             Email
@@ -58,8 +49,7 @@ function SubmissionForm(props) {
           <StyledInput
             type="text"
             name="email"
-            onChange={props.handleInputChange}
-            required />
+            onChange={ props.handleInputChange } />
         </StyledFormElement>
         <SubmissionText>
           <label>
@@ -67,7 +57,7 @@ function SubmissionForm(props) {
           </label>
           <StyledTextarea
             name="body"
-            onChange={props.handleInputChange}>
+            onChange={ props.handleInputChange }>
           </StyledTextarea>
         </SubmissionText>
         <StyledFormElement>

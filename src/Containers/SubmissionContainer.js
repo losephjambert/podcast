@@ -13,13 +13,12 @@ class SubmissionContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
       email: '',
       body: '',
+      submissionResponse: {},
       handleInputChange: this.handleInputChange.bind(this),
       handleSubmit: this.handleSubmit.bind(this),
-      sendEmailResponse: ''
-    } ;
+    }
   }
 
   handleInputChange(event) {
@@ -30,79 +29,40 @@ class SubmissionContainer extends Component {
     this.setState({
       [name]: value
     });
-
-    this.showInputError(event.target.name);
   }
 
+  formIsValid() {
+    const emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const emailIsValid = emailRegex.test(this.state.email);
+    const bodyIsValid = (typeof this.state.body === 'string');
+    if (emailIsValid && bodyIsValid) {
+      return true
+    } else {
+      this.setState({
+        submissionResponse: {
+          message: "Check your form, please.",
+          class: "error"
+        }
+      })
+    }
+  }
   handleSubmit(event) {
     event.preventDefault();
-    if (!this.showFormErrors()) {
-      // invalid form (errors are displayed)
-    } else {
+    this.setState = this.setState.bind(this)
+    if (this.formIsValid()) {
+      var self = this;
       axios
         .post(`https://trust-issues-api.herokuapp.com/send-email`, {
           subject: `New Submission!`,
-          name: this.state.name,
           email: this.state.email,
           body: this.state.body
         })
         .catch(error => console.error(error))
         .then(function(response){
-          // or whatever
-          alert(response.data.message);
+          self.setState({ submissionResponse: { message: "Thanks!", class: "success"}})
           document.getElementById('emailForm').reset();
         })
     }
-  }
-
-  showFormErrors() {
-    const inputs = document.querySelectorAll('input');
-    let isFormValid = true;
-
-    inputs.forEach(input => {
-      input.classList.add('active');
-
-      const isInputValid = this.showInputError(input.name);
-
-      if (!isInputValid) {
-        isFormValid = false;
-      }
-    });
-    return isFormValid;
-  }
-
-  showInputError(refName) {
-    console.log(refName)
-    console.log(this.refs)
-    const validity = this.refs[refName].validity;
-    const label = document.getElementById(`${refName}Label`).textContent;
-    const error = document.getElementById(`${refName}Error`);
-    const isPassword = refName.indexOf('password') !== -1;
-    const isPasswordConfirm = refName === 'passwordConfirm';
-
-    if (isPasswordConfirm) {
-      if (this.refs.password.value !== this.refs.passwordConfirm.value) {
-        this.refs.passwordConfirm.setCustomValidity('Passwords do not match');
-      } else {
-        this.refs.passwordConfirm.setCustomValidity('');
-      }
-    }
-
-    if (!validity.valid) {
-      if (validity.valueMissing) {
-        error.textContent = `${label} is a required field`;
-      } else if (validity.typeMismatch) {
-        error.textContent = `${label} should be a valid email address`;
-      } else if (isPassword && validity.patternMismatch) {
-        error.textContent = `${label} should be longer than 4 chars`;
-      } else if (isPasswordConfirm && validity.customError) {
-        error.textContent = 'Passwords do not match';
-      }
-      return false;
-    }
-
-    error.textContent = '';
-    return true;
   }
 
   render() {
