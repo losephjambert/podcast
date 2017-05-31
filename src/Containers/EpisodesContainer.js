@@ -32,6 +32,7 @@ const Episode = styled.li`
 
 const PlayButton = Button.extend`
   padding: 15px;
+  margin: 10px 0;
 `;
 
 class EpisodesContainer extends Component {
@@ -47,7 +48,7 @@ class EpisodesContainer extends Component {
     const episode = this.props.RSS.map((item, index) =>
       <Episode key={index}>
         <Title key={index+.1}>
-          {index+1}. {item.title.substring(0,15)}
+          {this.props.RSS.length - index}. {item.title.substring(0,15)}
         </Title>
         <Description key={index+.2}>
           {item.description}
