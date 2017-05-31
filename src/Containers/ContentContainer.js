@@ -101,7 +101,7 @@ class ContentContainer extends Component {
     const ABOUT = <SubmissionContainer description={ this.state.content.submissionDescription.body } />
     const SUBMIT = <AboutContainer body={ this.state.content.about.body } />
     return (
-      <Wrap>
+      <div>
         <NavContainer
           showRegion={ this.showRegion }
           navItems={ this.state.navItems }
@@ -136,7 +136,7 @@ class ContentContainer extends Component {
           backgroundLeft={ this.state.content.backgroundLeft }
           backgroundRight={ this.state.content.backgroundRight }
           backgroundMiddle={ this.state.content.backgroundMiddle } />
-      </Wrap>
+      </div>
     )
   }
 }

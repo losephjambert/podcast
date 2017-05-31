@@ -1,20 +1,37 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { extend } from 'styled-components';
+import Colors from '../StyleComponents/Colors'
+import Button from '../StyleComponents/Button'
+import ContentHeader from '../StyleComponents/ContentHeader'
 
-const List = styled.ul`
-  margin: 0;
-  padding: 0;
-`;
-const Title = styled.li`
-  padding: 10px 0;
+const Title = styled.div`
   font-size: 28px;
+  text-align: center;
+  font-weight: 500;
 `;
-const Description = styled.li`
-  padding: 5px 0;
-  font-size: 18px;
+const Description = styled.div`
+  font-size: 12px;
+  text-align: center;
+  font-weight: 300;
 `;
 
-const Episodes = styled.div`
+const Episodes = styled.ul`
+  box-shadow:  0 0 0 6px ${Colors.darkPurple};
+`;
+
+const Episode = styled.li`
+  display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  padding: 10px;
+  box-shadow: 0 0 0 3px ${Colors.lightPurple};
+  background-color: ${Colors.darkPurple};
+  color: ${Colors.lightPurple};
+`;
+
+const PlayButton = Button.extend`
+  padding: 15px;
 `;
 
 class EpisodesContainer extends Component {
@@ -28,22 +45,23 @@ class EpisodesContainer extends Component {
 
   render() {
     const episode = this.props.RSS.map((item, index) =>
-      <span key={item.title}>
-      <Title key={index} onClick={() => { this.props.playEpisode(item, index) } }>
-        {item.title}
-      </Title>
-
-      <Description key={index + .1}>
-        {item.description}
-      </Description>
-      </span>
+      <Episode key={index}>
+        <Title key={index+.1}>
+          {index+1}. {item.title.substring(0,15)}
+        </Title>
+        <Description key={index+.2}>
+          {item.description}
+        </Description>
+        <PlayButton key={index+.3} onClick={() => { this.props.playEpisode(item, index) } }>Play Episode</PlayButton>
+      </Episode>
     );
     return (
-      <Episodes >
-        <List>
+      <div>
+        <ContentHeader>Episodes</ContentHeader>
+        <Episodes>
           {episode}
-        </List>
-      </Episodes>
+        </Episodes>
+      </div>
     );
   }
 }
