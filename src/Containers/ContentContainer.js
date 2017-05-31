@@ -100,9 +100,9 @@ class ContentContainer extends Component {
           showRegion={ this.showRegion }
           navItems={ this.state.navItems }
           selectedRegion={ this.state.selectedRegion }/>
-        <EpisodesContainer RSS={ this.state.RSS } playEpisode={ this.playEpisode } />
-        <SubmissionContainer description={ this.state.content.submissionDescription.body } />
-        <AboutContainer body={ this.state.content.about.body } />
+        {this.state.selectedRegion === "episodes" ?  <EpisodesContainer RSS={ this.state.RSS } playEpisode={ this.playEpisode } /> : null}
+        {this.state.selectedRegion === "submit" ?  <SubmissionContainer description={ this.state.content.submissionDescription.body } /> : null}
+        {this.state.selectedRegion === "about" ?  <AboutContainer body={ this.state.content.about.body } /> : null}
         <PlayerContainer playingEpisode={ this.state.playingEpisode } />
 
         <BackgroundContainer
