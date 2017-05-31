@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
-import Wrap from '../StyleComponents/Wrap';
+import React, { Component } from 'react'
 import axios from 'axios';
+import { CSSTransitionGroup } from 'react-transition-group'
 
-import NavContainer from './NavContainer';
-import EpisodesContainer from './EpisodesContainer';
-import AboutContainer from './AboutContainer';
-import SubmissionContainer from './SubmissionContainer';
-import PlayerContainer from './PlayerContainer';
-import BackgroundContainer from './BackgroundContainer';
+import OpacityContainer from '../StyleComponents/OpacityContainer'
+import Wrap from '../StyleComponents/Wrap'
+
+import NavContainer from './NavContainer'
+import EpisodesContainer from './EpisodesContainer'
+import AboutContainer from './AboutContainer'
+import SubmissionContainer from './SubmissionContainer'
+import PlayerContainer from './PlayerContainer'
+import BackgroundContainer from './BackgroundContainer'
 
 class ContentContainer extends Component {
   constructor(props) {
@@ -94,15 +97,37 @@ class ContentContainer extends Component {
   }
 
   render() {
+    const EPISODES = <EpisodesContainer RSS={ this.state.RSS } playEpisode={ this.playEpisode } />
+    const ABOUT = <SubmissionContainer description={ this.state.content.submissionDescription.body } />
+    const SUBMIT = <AboutContainer body={ this.state.content.about.body } />
     return (
       <Wrap>
         <NavContainer
           showRegion={ this.showRegion }
           navItems={ this.state.navItems }
           selectedRegion={ this.state.selectedRegion }/>
-        <EpisodesContainer RSS={ this.state.RSS } playEpisode={ this.playEpisode } />
-        <SubmissionContainer description={ this.state.content.submissionDescription.body } />
-        <AboutContainer body={ this.state.content.about.body } />
+        <CSSTransitionGroup
+          transitionName="is-showing"
+          transitionAppear={true}
+          transitionAppearTimeout={300}
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={300}>
+            {this.state.selectedRegion === "episodes" ?
+              <OpacityContainer>
+                {EPISODES}
+              </OpacityContainer>
+            : null}
+            {this.state.selectedRegion === "submit" ?
+              <OpacityContainer>
+                {SUBMIT}
+              </OpacityContainer> 
+            : null}
+            {this.state.selectedRegion === "about" ?
+              <OpacityContainer>
+                {ABOUT}
+              </OpacityContainer>
+            : null}
+        </CSSTransitionGroup>
         <PlayerContainer playingEpisode={ this.state.playingEpisode } />
 
         <BackgroundContainer
