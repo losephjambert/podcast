@@ -1,9 +1,11 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
+import Colors from './Colors'
 
 const Wrap = styled.div`
-  font-family: "nimbus-roman", helvetica;
-  font-weight: regular;
   padding: 15px;
+  box-shadow: inset 0 0 0 5px ${Colors.darkPurple};
+  background-color: ${Colors.lightPurple};
+  font-family: 'Poppins', Helvetica, sans-serif;
 `;
 
 
