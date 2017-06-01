@@ -15,7 +15,7 @@ const SoonHeader = styled.h1 `
 const SoonImg = styled.img `
   height:200px;
 `
-class ComingSoon extends Component {
+class UnderConstruction extends Component {
   constructor(props) {
     super(props);
     this.state = {

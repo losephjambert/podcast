@@ -10,6 +10,7 @@ const Button = styled.button`
   width: inherit;
   background-color: ${props => props.selected ? Colors.darkPurple : Colors.lightPurple};
   color: ${props => props.selected ? Colors.lightPurple : Colors.darkPurple};
+  transition: 300ms;
 `;
 
 

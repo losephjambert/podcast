@@ -3,7 +3,6 @@ import axios from 'axios';
 import { CSSTransitionGroup } from 'react-transition-group'
 
 import OpacityContainer from '../StyleComponents/OpacityContainer'
-import Wrap from '../StyleComponents/Wrap'
 
 import NavContainer from './NavContainer'
 import EpisodesContainer from './EpisodesContainer'
@@ -97,9 +96,9 @@ class ContentContainer extends Component {
   }
 
   render() {
-    const EPISODES = <EpisodesContainer RSS={ this.state.RSS } playEpisode={ this.playEpisode } />
-    const ABOUT = <SubmissionContainer description={ this.state.content.submissionDescription.body } />
-    const SUBMIT = <AboutContainer body={ this.state.content.about.body } />
+    const EPISODES = <EpisodesContainer RSS={ this.state.RSS } playEpisode={ this.playEpisode } currentEpisodeIndex={ this.state.playingEpisode.number ? this.state.playingEpisode.number : null} />
+    const SUBMIT = <SubmissionContainer description={ this.state.content.submissionDescription.body } />
+    const ABOUT = <AboutContainer body={ this.state.content.about.body } />
     return (
       <div>
         <NavContainer

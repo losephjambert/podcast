@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import styled, { extend } from 'styled-components';
+import styled from 'styled-components';
 import Colors from '../StyleComponents/Colors'
 import Button from '../StyleComponents/Button'
 import ContentHeader from '../StyleComponents/ContentHeader'
+import ReadMore from '../Components/ReadMore'
 
 const Title = styled.div`
-  font-size: 28px;
+  margin-bottom: 15px;
+  font-size: 22px;
   text-align: center;
   font-weight: 500;
 `;
 const Description = styled.div`
+  margin-bottom: 40px;
+  padding: 0 25px;
   font-size: 12px;
+  line-height: 1.3em;
   text-align: center;
   font-weight: 300;
 `;
@@ -24,7 +29,7 @@ const Episode = styled.li`
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-  padding: 10px;
+  padding: 15px 0 10px;
   box-shadow: 0 0 0 3px ${Colors.lightPurple};
   background-color: ${Colors.darkPurple};
   color: ${Colors.lightPurple};
@@ -33,6 +38,12 @@ const Episode = styled.li`
 const PlayButton = Button.extend`
   padding: 15px;
   margin: 10px 0;
+  min-width: 130px;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: ${props => props.playing ? Colors.darkPurple : Colors.lightPurple};
+  color: ${props => props.playing ? Colors.lightPurple : Colors.darkPurple};
+  box-shadow: 0 0 0 3px ${props => props.playing ? Colors.lightPurple : Colors.darkPurple};
 `;
 
 class EpisodesContainer extends Component {
@@ -40,7 +51,7 @@ class EpisodesContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: null,
+      error: null
     };
   }
 
@@ -51,9 +62,14 @@ class EpisodesContainer extends Component {
           {this.props.RSS.length - index}. {item.title.substring(0,15)}
         </Title>
         <Description key={index+.2}>
-          {item.description}
+          <ReadMore more="...more" less="less" lines={2}>{item.description}</ReadMore>
         </Description>
-        <PlayButton key={index+.3} onClick={() => { this.props.playEpisode(item, index) } }>Play Episode</PlayButton>
+        <PlayButton
+          key={index+.3}
+          playing={ this.props.currentEpisodeIndex === this.props.RSS.length - index ? true : false }
+          onClick={ () => { this.props.playEpisode(item, index) } }>
+            { this.props.currentEpisodeIndex === this.props.RSS.length - index ? 'playing' : 'play episode' }
+        </PlayButton>
       </Episode>
     );
     return (

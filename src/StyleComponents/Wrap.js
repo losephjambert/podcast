@@ -4,7 +4,7 @@ import Colors from './Colors'
 const Wrap = styled.div`
   padding: 15px;
   box-shadow: inset 0 0 0 5px ${Colors.darkPurple};
-  background-color: ${Colors.lightPurple};
+  background-color: ${Colors.mediumPurple};
   font-family: 'Poppins', Helvetica, sans-serif;
 `;
 
