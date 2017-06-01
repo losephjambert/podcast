@@ -3,7 +3,6 @@ import axios from 'axios';
 import { CSSTransitionGroup } from 'react-transition-group'
 
 import OpacityContainer from '../StyleComponents/OpacityContainer'
-import Wrap from '../StyleComponents/Wrap'
 
 import NavContainer from './NavContainer'
 import EpisodesContainer from './EpisodesContainer'
@@ -63,10 +62,6 @@ class ContentContainer extends Component {
       .then(response => this.setState({ content: response.data} ))
   }
 
-  componentDidUpdate(){
-    console.log("componentDidUpdate",this.state.selectedRegion)
-  }
-
   playEpisode(selectedEpisode, index) {
     selectedEpisode.number = (this.state.RSS.length - index)
     this.setState({
@@ -75,7 +70,7 @@ class ContentContainer extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(this.state.playingEpisode.title != prevState.playingEpisode.title) {
+    if(this.state.playingEpisode.title !== prevState.playingEpisode.title) {
       const content = { ...this.state.content };
       content.marquee.body = this.state.playingEpisode.title;
       content.backgroundLeft = {

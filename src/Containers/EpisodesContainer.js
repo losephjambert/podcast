@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled, { extend } from 'styled-components';
+import styled from 'styled-components';
 import Colors from '../StyleComponents/Colors'
 import Button from '../StyleComponents/Button'
 import ContentHeader from '../StyleComponents/ContentHeader'
