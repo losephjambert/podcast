@@ -32,4 +32,4 @@ class ComingSoon extends Component {
   }
 }
 
-export default ComingSoon;
+export default UnderConstruction;
