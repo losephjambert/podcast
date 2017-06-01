@@ -11,6 +11,7 @@ const SoonWrapper = styled.div`
 
 const SoonHeader = styled.h1 `
   height:200px;
+  color: rgba(191,0,254,1);
 `
 const SoonImg = styled.img `
   height:200px;
