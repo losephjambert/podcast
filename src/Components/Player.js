@@ -109,6 +109,7 @@ class AutoPlay extends React.Component {
             onPlay={this.handleOnPlay}
             onEnd={this.handleOnEnd}
             volume={this.state.volume}
+            html5={true}
             ref={(ref) => (this.player = ref)}
           />
           : null

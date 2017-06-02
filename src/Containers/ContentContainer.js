@@ -62,10 +62,6 @@ class ContentContainer extends Component {
       .then(response => this.setState({ content: response.data} ))
   }
 
-  componentDidUpdate(){
-    console.log("componentDidUpdate",this.state.selectedRegion)
-  }
-
   playEpisode(selectedEpisode, index) {
     selectedEpisode.number = (this.state.RSS.length - index)
     this.setState({
@@ -73,19 +69,19 @@ class ContentContainer extends Component {
     })
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    if(nextState.playingEpisode.title) {
-      this.state.content.marquee = {
-        "body": nextState.playingEpisode.title
+  componentDidUpdate(prevProps, prevState) {
+    if(this.state.playingEpisode.title !== prevState.playingEpisode.title) {
+      const content = { ...this.state.content };
+      content.marquee.body = this.state.playingEpisode.title;
+      content.backgroundLeft = {
+        "headline": `Episode ${this.state.playingEpisode.number}`,
+        "body": this.state.playingEpisode.description
       }
-      this.state.content.backgroundLeft = {
-        "headline": `Episode ${nextState.playingEpisode.number}`,
-        "body": nextState.playingEpisode.description
+      content.backgroundRight = {
+        headline: `Episode ${this.state.playingEpisode.number}`,
+        body: this.state.playingEpisode.description
       }
-      this.state.content.backgroundRight = {
-        headline: `Episode ${nextState.playingEpisode.number}`,
-        body: nextState.playingEpisode.description
-      }
+      this.setState({content});
     }
   }
 
@@ -119,7 +115,7 @@ class ContentContainer extends Component {
             {this.state.selectedRegion === "submit" ?
               <OpacityContainer>
                 {SUBMIT}
-              </OpacityContainer> 
+              </OpacityContainer>
             : null}
             {this.state.selectedRegion === "about" ?
               <OpacityContainer>
