@@ -10,6 +10,7 @@ const NavList = styled.ul`
   display: flex;
   justify-content: space-around;
   align-item: center;
+  margin: 25px 0 50px;
 `;
 
 const NavItem = styled.li`
