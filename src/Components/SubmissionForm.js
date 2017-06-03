@@ -17,34 +17,14 @@ const Form = styled.form`
   padding: 15px;
 `;
 
-const InputWrapper = styled.div`
-  display: flex;
-    flex-flow: column nowrap;
-`;
-
 const TextArea = styled.textarea`
   border: none;
   resize: none;
   outline: none;
+  margin-top:15px;
   background-color: ${Colors.lightPurple};
   font-family: ${Fonts.poppins};
   color: ${Colors.darkPurple};
-`;
-
-const SubmissionText = styled.div`
-  display: flex;
-    flex-flow: column nowrap;
-`;
-
-const Input = styled.input`
-  border: none;
-  outline: none;
-  background-color: ${Colors.lightPurple};
-  font-family: ${Fonts.poppins};
-  color: ${Colors.darkPurple};
-  :-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px ${Colors.lightPurple} inset !important;
-  }
 `;
 
 const SubmitButton = Button.extend`
@@ -66,28 +46,12 @@ function SubmissionForm(props) {
         { props.submissionResponse.message ?
           <span className={ props.submissionResponse.class }>{ props.submissionResponse.message }</span>
         : null}
-        <InputWrapper>
-          <label>
-            Email
-          </label>
-          <Input
-            type="text"
-            name="email"
-            onChange={ props.handleInputChange } />
-        </InputWrapper>
-        <SubmissionText>
-          <label>
-            What
-          </label>
           <TextArea
             name="body"
             rows="10"
             onChange={ props.handleInputChange }>
           </TextArea>
-        </SubmissionText>
-        <InputWrapper>
           <SubmitButton type="submit" value="Submit" >send</SubmitButton>
-        </InputWrapper>
       </Form>
     </FormWrapper>
   );

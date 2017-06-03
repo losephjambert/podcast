@@ -8,7 +8,6 @@ const Description = styled.div`
 
   p{
     margin-bottom: 15px;
-    color: red;
   }
 `;
 

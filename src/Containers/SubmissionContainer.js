@@ -6,7 +6,6 @@ class SubmissionContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
       body: '',
       submissionResponse: {},
       handleInputChange: this.handleInputChange.bind(this),
@@ -25,10 +24,8 @@ class SubmissionContainer extends Component {
   }
 
   formIsValid() {
-    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const emailIsValid = emailRegex.test(this.state.email);
-    const bodyIsValid = (typeof this.state.body === 'string');
-    if (emailIsValid && bodyIsValid) {
+    const bodyIsValid = (this.state.body && typeof this.state.body === 'string');
+    if (bodyIsValid) {
       return true
     } else {
       this.setState({
@@ -46,8 +43,7 @@ class SubmissionContainer extends Component {
       var self = this;
       axios
         .post(`https://trust-issues-api.herokuapp.com/send-email`, {
-          subject: `New Submission!`,
-          email: this.state.email,
+          subject: `New Submission from wehavetrustissues.com`,
           body: this.state.body
         })
         .catch(error => console.error(error))
