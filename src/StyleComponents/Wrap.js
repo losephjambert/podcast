@@ -7,6 +7,7 @@ const Wrap = styled.div`
   box-shadow: inset 0 0 0 5px ${Colors.darkPurple};
   background-color: ${Colors.mediumPurple};
   font-family: ${Fonts.poppins};
+  overflow: hidden;
 `;
 
 export default Wrap;
