@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+import axios from 'axios'
 import { CSSTransitionGroup } from 'react-transition-group'
+import marked from 'marked'
 
 import OpacityContainer from '../StyleComponents/OpacityContainer'
 
@@ -49,13 +50,19 @@ class ContentContainer extends Component {
         },
       }
     };
+    this.parseMarkdown = this.parseMarkdown.bind(this)
+  }
+  parseMarkdown(rss){
+    rss.data.items.map((item, index) =>
+      item.description = marked(item.description))
+    this.setState({RSS: rss.data.items})
   }
 
   componentWillMount(){
     axios
       .get(`https://trust-issues-api.herokuapp.com/rss`)
       .catch(error => console.error(error))
-      .then(response => this.setState({RSS: response.data.items}))
+      .then(response => this.parseMarkdown(response))
     axios
       .get(`https://trust-issues-api.herokuapp.com/content`)
       .catch(error => console.error(error))
