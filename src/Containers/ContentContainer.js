@@ -97,6 +97,8 @@ class ContentContainer extends Component {
     const ABOUT = <AboutContainer body={ this.state.content.about.body } />
     return (
       <div>
+        { true ?
+        <div>
         <NavContainer
           showRegion={ this.showRegion }
           navItems={ this.state.navItems }
@@ -123,8 +125,10 @@ class ContentContainer extends Component {
               </OpacityContainer>
             : null}
         </CSSTransitionGroup>
-        <PlayerContainer playingEpisode={ this.state.playingEpisode } />
 
+        <PlayerContainer playingEpisode={ this.state.playingEpisode } />
+        </div>
+        : null}
         <BackgroundContainer
           playingEpisode={ this.state.playingEpisode }
           marquee={ this.state.content.marquee }

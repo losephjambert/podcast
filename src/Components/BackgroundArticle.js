@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+const Article = styled.p`
+  line-height:1.3em;
+  font-size:14px;
+`;
+
 
 class BackgroundArticle extends Component {
   constructor(props) {
@@ -9,7 +16,7 @@ class BackgroundArticle extends Component {
 
   render() {
     return (
-      <p>{this.props.body}</p>
+      <Article>{this.props.body}</Article>
     );
   }
 }
