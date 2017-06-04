@@ -1,4 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import Colors from '../StyleComponents/Colors'
+
+const BackgroundArticleBody = styled.div`
+  a {
+    color: ${Colors.lightPurple};
+  }
+  p {
+    padding:10px 0px;
+  }
+`;
 
 class BackgroundArticle extends Component {
   constructor(props) {
@@ -9,7 +20,7 @@ class BackgroundArticle extends Component {
 
   render() {
     return (
-      <p>{this.props.body}</p>
+      <BackgroundArticleBody dangerouslySetInnerHTML={{__html: this.props.body}} />
     );
   }
 }

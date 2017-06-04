@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import marked from 'marked';
 
-const Description = styled.div`
+const AboutDescription = styled.div`
   margin:50px 0px;
   padding:5px;
 
@@ -14,11 +14,11 @@ const Description = styled.div`
 function DynamicContentBlock(props) {
   if (props.error) {
     return (
-      <Description>{props.error}</Description>
+      <AboutDescription>{props.error}</AboutDescription>
     );
   } else {
     return (
-      <Description dangerouslySetInnerHTML={{ __html: marked(props.body) }}></Description>
+      <AboutDescription dangerouslySetInnerHTML={{ __html: marked(props.body) }}></AboutDescription>
       );
   }
 }

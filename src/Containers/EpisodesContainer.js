@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Colors from '../StyleComponents/Colors'
 import Button from '../StyleComponents/Button'
 import ContentHeader from '../StyleComponents/ContentHeader'
-import ReadMore from '../Components/ReadMore'
+import Description from '../Components/Description';
 
 const Title = styled.div`
   margin-bottom: 15px;
@@ -11,13 +11,19 @@ const Title = styled.div`
   text-align: center;
   font-weight: 500;
 `;
-const Description = styled.div`
-  margin-bottom: 40px;
-  padding: 0 25px;
-  font-size: 12px;
-  line-height: 1.3em;
-  text-align: center;
-  font-weight: 300;
+
+const MoreOrLessContainer = styled.span`
+    display: flex;
+        justify-content: center;
+        align-items: center;
+    position: relative;
+`;
+
+const MoreOrLess = styled.span`
+    position: absolute;
+    bottom: -20px;
+    color: ${Colors.lightPurple};
+    font-weight: 500;
 `;
 
 const Episodes = styled.ul`
@@ -61,9 +67,7 @@ class EpisodesContainer extends Component {
         <Title key={index+.1}>
           {this.props.RSS.length - index}. {item.title.substring(0,15)}
         </Title>
-        <Description key={index+.2}>
-          <ReadMore more="...more" less="less" lines={2}>{item.description}</ReadMore>
-        </Description>
+        <Description key={index+.2} item={item}/>
         <PlayButton
           key={index+.3}
           playing={ this.props.currentEpisodeIndex === this.props.RSS.length - index ? true : false }
