@@ -6,10 +6,11 @@ const Article = styled.div`
   line-height:1.3em;
   font-size:14px;
   a {
-    color: ${Colors.lightPurple};
+    color: ${Colors.darkPurple};
   }
   p {
     padding:10px 0px;
+    word-wrap: break-word;
   }
 `;
 
