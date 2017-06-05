@@ -11,8 +11,9 @@ const DescriptionWrapper = styled.div`
     line-height: 1.3em;
     text-align: center;
     font-weight: 300;
+    width:100%;
     p {
-        padding:0px 10 px;
+        // adding padding to the description paragraph tags fuuucks this up
     }
     a {
         color: ${Colors.mediumPurple};
@@ -56,7 +57,8 @@ class Description extends Component {
         <DescriptionWrapper>
             { !this.state.expanded ?
             <Truncate lines={2} dangerouslySetInnerHTML={{ __html: this.props.item.description}}/>
-            : <div dangerouslySetInnerHTML={{ __html: this.props.item.description}}></div>
+            :
+            <div dangerouslySetInnerHTML={{ __html: this.props.item.description}} />
             }
             <MoreOrLessContainer>
               <MoreOrLess href='#' onClick={this.toggleLines}>{this.state.expanded ? "less" : "more"}</MoreOrLess>
