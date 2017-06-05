@@ -10,7 +10,7 @@ class ApplicationContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      "comingSoon":false
+      "comingSoon":true
     };
   }
 

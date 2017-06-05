@@ -9,15 +9,21 @@ import raf from 'raf' // requestAnimationFrame polyfill
 const PlayerElement = styled.div`
   display:flex;
     align-items:center;
+  width:50%;
 `
 
 const PlayerButton = Button.extend`
   width:75px;
   height:75px;
+  color: ${(props) => props.playing ? Colors.lightPurple : Colors.darkPurple};
+  background-color: ${(props) => props.playing ? Colors.darkPurple : Colors.lightPurple};
 `
 const ButtonGroup = styled.div`
   display:flex;
-  flex-flow:row nowrap;
+    flex-flow:row nowrap;
+    justify-content:space-around;
+  width:50%;
+  padding:20px;
 `
 
 const PlayerControls = styled.div`
@@ -34,7 +40,7 @@ const PlayerLabel = styled.label`
 `;
 
 const trackStyle = {
-  width: '250px',
+  width: '100%',
   height: '3px',
   backgroundColor: `${Colors.darkPurple}`,
   position: 'relative',
@@ -168,10 +174,10 @@ class AutoPlay extends React.Component {
           <PlayerLabel>{this.state.volume.toFixed(2)}</PlayerLabel>
         </PlayerElement>
         <ButtonGroup>
-          <PlayerButton onClick={this.handleToggle}>
+          <PlayerButton playing={this.state.playing} onClick={this.handleToggle}>
             Play
           </PlayerButton>
-          <PlayerButton onClick={this.handleToggle}>
+          <PlayerButton playing={!this.state.playing} onClick={this.handleToggle}>
             Pause
           </PlayerButton>
         </ButtonGroup>
