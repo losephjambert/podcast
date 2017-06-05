@@ -22,15 +22,22 @@ const FixedTopBar = styled.div`
 `;
 
 const HeaderContentContainer = styled.div`
+  display:flex;
+`;
 
+const FakeLabel = styled.span`
+  color: ${Colors.darkPurple};
+`;
+const FakeInput = styled.div`
+  box-shadow: inset 0 0 0 3px ${Colors.darkPurple};
+  background-color: ${Colors.lightPurple};
+  width:100%;
 `;
 
 class HeaderContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showSubmit: false,
-      showAbout: false
     };
   }
 
@@ -41,7 +48,9 @@ class HeaderContainer extends Component {
           <SiteTitle>Trust Issues</SiteTitle>
         </FixedTopBar>
         <HeaderContentContainer>
-          put the header content here
+          <FakeLabel>Send To:</FakeLabel><FakeInput/>
+          <FakeLabel>Copy To:</FakeLabel><FakeInput/>
+          <FakeLabel>Subject:</FakeLabel><FakeInput/>
         </HeaderContentContainer>
       </Header>
     );
