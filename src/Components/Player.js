@@ -101,9 +101,9 @@ class AutoPlay extends React.Component {
     return (
       <div className='full-control'>
         {
-          this.props.src.enclosures ?
+          this.props.src.enclosure ?
           <ReactHowler
-            src={this.props.src.enclosures[0].url}
+            src={this.props.src.enclosure.url}
             playing={this.state.playing}
             onLoad={this.handleOnLoad}
             onPlay={this.handleOnPlay}
