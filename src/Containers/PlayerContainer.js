@@ -23,6 +23,13 @@ const PlayerWrapper = styled.div`
   box-shadow: inset 0 0 0 5px ${Colors.darkPurple};
 `;
 
+const HideOrShowPlayer = styled.div`
+  display: ${(props) => props.expanded ? "block" : "none"};
+  width: 100%;
+  box-shadow: inset 0 0 0 5px ${Colors.darkPurple};
+  background-color: ${Colors.mediumPurple};
+`;
+
 class PlayerContainer extends Component {
   constructor(props) {
     super(props);
@@ -40,9 +47,9 @@ class PlayerContainer extends Component {
     return (
       <PlayerWrapper>
         <PlayerHeader onClick={this.togglePlayer}>{ this.state.expanded ? "-" : "+"} TRUST PLAYER</PlayerHeader>
-        { this.state.expanded?
+        <HideOrShowPlayer expanded={this.state.expanded}>
           <Player src={this.props.playingEpisode}/>
-        : null}
+        </HideOrShowPlayer>
       </PlayerWrapper>
     );
   }
