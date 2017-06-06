@@ -2,13 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import marked from 'marked';
 
-const AboutDescription = styled.div`
-  margin:50px 0px;
-  padding:5px;
+import Colors from '../StyleComponents/Colors'
 
-  p{
-    margin-bottom: 15px;
-  }
+const AboutDescription = styled.div`
+  padding: 25px 10px;
+  box-shadow: 0 0 0 3px ${Colors.lightPurple};
+  background-color: ${Colors.darkPurple};
+  color: ${Colors.lightPurple};
+  font-weight: 300;
+  line-height: 1.6;
+  p{margin-bottom: 15px;}
 `;
 
 function DynamicContentBlock(props) {

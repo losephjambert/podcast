@@ -1,0 +1,14 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <pattern id="New_Pattern_Swatch_2" data-name="New Pattern Swatch 2" width="129.11" height="101.79" patternTransform="translate(49.82 160.08) scale(0.16)" patternUnits="userSpaceOnUse" viewBox="0 0 129.11 101.79">
+      <rect width="129.11" height="101.79" fill="none"/>
+      <rect width="129.11" height="101.79" fill="#bf00fe"/>
+    </pattern>
+  </defs>
+  <title>episodes-active</title>
+  <g>
+    <path d="M38.64,62.34a16.76,16.76,0,0,1,23.7,0" fill="none" stroke-miterlimit="10" stroke-width="2.74" stroke="url(#New_Pattern_Swatch_2)"/>
+    <path d="M30.16,54a28.75,28.75,0,0,1,40.66,0" fill="none" stroke-miterlimit="10" stroke-width="2.74" stroke="url(#New_Pattern_Swatch_2)"/>
+    <path d="M21.68,45.59a40.74,40.74,0,0,1,57.62,0" fill="none" stroke-miterlimit="10" stroke-width="2.74" stroke="url(#New_Pattern_Swatch_2)"/>
+  </g>
+</svg>

@@ -1,6 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
-import Title from '../StyleComponents/Title';
+import Colors from '../StyleComponents/Colors'
+import ContentHeader from '../StyleComponents/ContentHeader'
+import Title from '../StyleComponents/Title'
+
+const About = styled.div`
+  margin: 0 6px;
+  box-shadow:  0 0 0 6px ${Colors.darkPurple};
+`;
+
 
 import DynamicContentBlock from '../Components/DynamicContentBlock';
 
@@ -15,8 +24,10 @@ class AboutContainer extends Component {
   render() {
     return (
       <div>
-        <Title>About</Title>
-        <DynamicContentBlock body={ this.props.body }/>
+        <ContentHeader>About</ContentHeader>
+        <About>
+          <DynamicContentBlock body={ this.props.body }/>
+        </About>
       </div>
     );
   }
