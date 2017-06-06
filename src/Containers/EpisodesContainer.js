@@ -12,20 +12,6 @@ const Title = styled.div`
   font-weight: 500;
 `;
 
-const MoreOrLessContainer = styled.span`
-    display: flex;
-        justify-content: center;
-        align-items: center;
-    position: relative;
-`;
-
-const MoreOrLess = styled.span`
-    position: absolute;
-    bottom: -20px;
-    color: ${Colors.lightPurple};
-    font-weight: 500;
-`;
-
 const Episodes = styled.ul`
   box-shadow:  0 0 0 6px ${Colors.darkPurple};
 `;

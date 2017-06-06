@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Truncate from 'react-truncate-html'
 import styled from 'styled-components'
 import Colors from '../StyleComponents/Colors'
-import marked from 'marked';
 
 const DescriptionWrapper = styled.div`
     margin-bottom: 40px;

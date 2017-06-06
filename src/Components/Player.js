@@ -45,6 +45,7 @@ const PlayerLabel = styled.div`
   padding-${(props) => props.align === "right" ? "left" : "right"} : 10px;
 `;
 
+// The track can't be a styled component because it needs the ref property. I think.
 const trackStyle = {
     width: "100%",
     height: "3px",
@@ -117,9 +118,8 @@ class AutoPlay extends React.Component {
   }
 
   renderSeekPos () {
-    var progress = this.player.seek();
     this.setState({
-      seek: progress
+      seek: this.player.seek()
     })
     if (this.state.playing) {
       this._raf = raf(this.renderSeekPos)
@@ -131,6 +131,7 @@ class AutoPlay extends React.Component {
   }
 
   render () {
+    // these have to be here bc thumbProgress is dynamic
     const thumbProgress = this.refs.track ? (this.state.seek / this.state.duration) * this.refs.track.offsetWidth : null;
     const thumbStyle = {
         height: '24px',
@@ -145,7 +146,7 @@ class AutoPlay extends React.Component {
     return (
       <PlayerControls>
         <PlayerElement>
-          <PlayerLabel align="left">Title: </PlayerLabel>
+          <PlayerLabel align="left">TITLE: </PlayerLabel>
           <FakeInput value={this.props.src.title || "We have trust issues"}/>
         </PlayerElement>
         <PlayerElement>
@@ -170,7 +171,7 @@ class AutoPlay extends React.Component {
           <PlayerLabel align="right">{ mmssTime(this.state.duration)}</PlayerLabel>
         </PlayerElement>
         <PlayerElement>
-            <PlayerLabel align="left">VOLUME</PlayerLabel>
+            <PlayerLabel align="left">VOLUME:</PlayerLabel>
             <Range
               type='range'
               min='0'

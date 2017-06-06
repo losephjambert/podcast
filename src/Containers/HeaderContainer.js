@@ -22,17 +22,15 @@ const FixedTopBar = styled.div`
 `;
 
 const HeaderContentContainer = styled.div`
-  display:flex;
-`;
 
-const FakeLabel = styled.span`
-  color: ${Colors.darkPurple};
 `;
 
 class HeaderContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showSubmit: false,
+      showAbout: false
     };
   }
 
@@ -43,7 +41,7 @@ class HeaderContainer extends Component {
           <SiteTitle>Trust Issues</SiteTitle>
         </FixedTopBar>
         <HeaderContentContainer>
-        blah blah blah
+          put the header content here
         </HeaderContentContainer>
       </Header>
     );
