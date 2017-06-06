@@ -9,7 +9,7 @@ const Wrap = styled.div`
   font-family: ${Fonts.poppins};
   overflow: hidden;
   @media screen and (min-width:375px){
-    padding: 65px 25px 15px;
+    padding: 65px 20px 15px;
   }
 `;
 

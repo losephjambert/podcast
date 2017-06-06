@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Button from '../StyleComponents/Button';
 import Colors from '../StyleComponents/Colors'
 
-
 const navIcons = {
   "episodes": "url(../../Assets/images/episodes-active.svg)",
   "about": "url(../../Assets/images/about-active.svg)",
@@ -21,8 +20,8 @@ const NavList = styled.ul`
 `;
 
 const NavItem = styled.li`
-  flex: 0 1 75px;
-  height: 75px;
+  flex:${props=> `0 1 ${props.size}`};
+  height: ${props=> props.size};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center -10px;
@@ -32,6 +31,10 @@ const NavItem = styled.li`
 
 const ButtonText = styled.span`
   margin-top: auto;
+  margin-bottom: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   text-transform: uppercase;
   width: 100%;
   text-align: center;
@@ -44,6 +47,7 @@ class NavContainer extends Component {
     const navButton = this.props.navItems.map((item, index) =>
 
       <NavItem
+      size='80px'
       style={ this.props.setBackgroundStyle(item.title === this.props.selectedRegion ? item.active : item.inactive) }
       backgroundImageURL={item.title === this.props.selectedRegion ? item.active : item.inactive}
       selected={item.title === this.props.selectedRegion ? true : false}

@@ -5,13 +5,13 @@ import marked from 'marked';
 import Colors from '../StyleComponents/Colors'
 
 const AboutDescription = styled.div`
-  padding:5px;
+  padding: 25px 10px;
   box-shadow: 0 0 0 3px ${Colors.lightPurple};
   background-color: ${Colors.darkPurple};
   color: ${Colors.lightPurple};
-  p{
-    margin-bottom: 15px;
-  }
+  font-weight: 300;
+  line-height: 1.6;
+  p{margin-bottom: 15px;}
 `;
 
 function DynamicContentBlock(props) {
