@@ -1,0 +1,18 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <pattern id="New_Pattern_Swatch_1" data-name="New Pattern Swatch 1" width="129.11" height="101.79" patternUnits="userSpaceOnUse" viewBox="0 0 129.11 101.79">
+      <rect width="129.11" height="101.79" fill="none"/>
+      <rect width="129.11" height="101.79" fill="#f8e6fe"/>
+    </pattern>
+  </defs>
+  <title>show</title>
+  <g>
+    <g>
+      <polygon points="66.83 42.91 61.63 39.9 48.59 32.38 38.55 49.76 51.59 57.29 56.8 60.29 69.49 67.63 79.53 50.24 66.83 42.91" fill="none" stroke-miterlimit="10" stroke-width="2.5" stroke="url(#New_Pattern_Swatch_1)"/>
+      <polygon points="66.83 42.91 61.63 39.9 48.59 32.38 46.65 35.75 54.88 51.59 60.09 54.59 77.59 53.61 79.53 50.24 66.83 42.91" fill="none" stroke-miterlimit="10" stroke-width="2.5" stroke="url(#New_Pattern_Swatch_1)"/>
+    </g>
+    <line x1="38.08" y1="43.32" x2="20.47" y2="43.32" fill="none" stroke-miterlimit="10" stroke-width="2.5" stroke="url(#New_Pattern_Swatch_1)"/>
+    <line x1="34.82" y1="49.52" x2="20.47" y2="49.52" fill="none" stroke-miterlimit="10" stroke-width="2.5" stroke="url(#New_Pattern_Swatch_1)"/>
+    <line x1="38.08" y1="55.72" x2="20.47" y2="55.72" fill="none" stroke-miterlimit="10" stroke-width="2.5" stroke="url(#New_Pattern_Swatch_1)"/>
+  </g>
+</svg>

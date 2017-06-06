@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import SubmissionForm from '../Components/SubmissionForm';
+import ContentHeader from '../StyleComponents/ContentHeader'
 
 class SubmissionContainer extends Component {
   constructor(props) {
@@ -56,7 +57,10 @@ class SubmissionContainer extends Component {
 
   render() {
     return (
-      <SubmissionForm description={this.props.description} {...this.state}/>
+      <div>
+        <ContentHeader>Submit</ContentHeader>
+        <SubmissionForm description={this.props.description} {...this.state}/>
+      </div>
     );
   }
 }

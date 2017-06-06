@@ -15,6 +15,7 @@ const FixedTopBar = styled.div`
   display: flex;
     justify-content: center;
     align-items: center;
+  padding: 8px 0 5px;
   width: 100%;
   height: 40px;
   background-color: ${Colors.lightPurple};
@@ -25,14 +26,38 @@ const HeaderContentContainer = styled.div`
 
 `;
 
-class HeaderContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showSubmit: false,
-      showAbout: false
-    };
+const InputBlock = styled.ul`
+  color: ${Colors.darkPurple};
+  display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  margin: 15px 0;
+  font-size: 12px;
+  @media screen and (min-width:375px){
+    font-size: 14px;
   }
+`;
+
+const InputBlockLabel = styled.li`
+  display: flex;
+    justify-content: flex-end;
+  flex: 0 1 100px;
+  padding: 10px 0;
+  margin-right: 10px;
+  @media screen and (min-width:375px){
+    margin-right: 5px;
+  }
+`;
+
+const InputBlockPlaceholder = styled.li`
+  display: inline-flex;
+  flex: 0 1 100%;
+  padding: 10px;
+  box-shadow: inset 0 0 0 3px ${Colors.darkPurple};
+  background-color: ${Colors.lightPurple};
+`;
+
+class HeaderContainer extends Component {
 
   render() {
     return (
@@ -41,7 +66,18 @@ class HeaderContainer extends Component {
           <SiteTitle>Trust Issues</SiteTitle>
         </FixedTopBar>
         <HeaderContentContainer>
-          put the header content here
+          <InputBlock>
+            <InputBlockLabel>Send To:</InputBlockLabel>
+            <InputBlockPlaceholder>420InsideJob@hotmail.com</InputBlockPlaceholder>
+          </InputBlock>
+          <InputBlock>
+            <InputBlockLabel>Copy To: </InputBlockLabel>
+            <InputBlockPlaceholder>all</InputBlockPlaceholder>
+          </InputBlock>
+          <InputBlock>
+            <InputBlockLabel>Subject: </InputBlockLabel>
+            <InputBlockPlaceholder>We Have Trust Issues</InputBlockPlaceholder>
+          </InputBlock>
         </HeaderContentContainer>
       </Header>
     );

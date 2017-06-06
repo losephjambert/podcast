@@ -27,6 +27,7 @@ const MoreOrLess = styled.span`
 `;
 
 const Episodes = styled.ul`
+  margin: 0 6px;
   box-shadow:  0 0 0 6px ${Colors.darkPurple};
 `;
 
@@ -65,10 +66,11 @@ class EpisodesContainer extends Component {
     const episode = this.props.RSS.map((item, index) =>
       <Episode key={index}>
         <Title key={index+.1}>
-          {this.props.RSS.length - index}. {item.title.substring(0,15)}
+          {this.props.RSS.length - index}. {item.title}
         </Title>
         <Description key={index+.2} item={item}/>
         <PlayButton
+          episode
           key={index+.3}
           playing={ this.props.currentEpisodeIndex === this.props.RSS.length - index ? true : false }
           onClick={ () => { this.props.playEpisode(item, index) } }>

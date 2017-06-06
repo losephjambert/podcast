@@ -17,12 +17,25 @@ class ContentContainer extends Component {
     super(props);
     this.playEpisode = this.playEpisode.bind(this);
     this.showRegion = this.showRegion.bind(this);
+    this.setBackgroundStyle = this.setBackgroundStyle.bind(this); 
 
     this.state = {
       "navItems" : [
-        "episodes",
-        "submit",
-        "about"
+        {
+          title: "episodes",
+          active: "url(../../Assets/images/episodes-active.svg)",
+          inactive: "url(../../Assets/images/episodes-inactive.svg)"
+        },
+        {
+          title: "about",
+          active: "url(../../Assets/images/about-active.svg)",
+          inactive: "url(../../Assets/images/about-inactive.svg)"
+        },
+        {
+          title: "submit",
+          active: "url(../../Assets/images/mail-active.svg)",
+          inactive: "url(../../Assets/images/mail-inactive.svg)"
+        },
       ],
       "selectedRegion": "episodes",
       "RSS":[],
@@ -94,8 +107,15 @@ class ContentContainer extends Component {
 
   showRegion(selectedRegion,index) {
     this.setState({
-      selectedRegion: this.state.navItems[index]
+      selectedRegion: this.state.navItems[index].title
     })
+  }
+
+  setBackgroundStyle(background){
+    let backgroundImageStyle={
+      backgroundImage: background.toString(),
+    }
+    return backgroundImageStyle;
   }
 
   render() {
@@ -107,6 +127,7 @@ class ContentContainer extends Component {
         { true ?
         <div>
         <NavContainer
+          setBackgroundStyle={ this.setBackgroundStyle }
           showRegion={ this.showRegion }
           navItems={ this.state.navItems }
           selectedRegion={ this.state.selectedRegion }/>

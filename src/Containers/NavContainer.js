@@ -1,32 +1,57 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Button from '../StyleComponents/Button';
+import Colors from '../StyleComponents/Colors'
 
+
+const navIcons = {
+  "episodes": "url(../../Assets/images/episodes-active.svg)",
+  "about": "url(../../Assets/images/about-active.svg)",
+  "submit": "url(../../Assets/images/submit-active.svg)",
+};
 
 const Nav = styled.nav`
 `;
 
 const NavList = styled.ul`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-item: center;
-  margin: 25px 0 50px;
+  margin: 35px 0;
 `;
 
 const NavItem = styled.li`
   flex: 0 1 75px;
   height: 75px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center -10px;
+  background-color: ${props => props.selected ? Colors.darkPurple : Colors.lightPurple};
+  color: ${props => props.selected ? Colors.lightPurple : Colors.darkPurple};
+`;
+
+const ButtonText = styled.span`
+  margin-top: auto;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: inherit;
 `;
 
 class NavContainer extends Component {
   render() {
     const navButton = this.props.navItems.map((item, index) =>
-      <NavItem key={item}>
+
+      <NavItem
+      style={ this.props.setBackgroundStyle(item.title === this.props.selectedRegion ? item.active : item.inactive) }
+      backgroundImageURL={item.title === this.props.selectedRegion ? item.active : item.inactive}
+      selected={item.title === this.props.selectedRegion ? true : false}
+      key={item.title}>
         <Button
-          selected={item === this.props.selectedRegion ? true : false}
           key={ index }
-          onClick={() => { this.props.showRegion(item ,index) } }>
-          {item} -- {item === this.props.selectedRegion ? 'Yep' : 'Nope'}
+          onClick={() => { this.props.showRegion(item.title , index) } }>
+          <ButtonText>{item.title}</ButtonText>
         </Button>
       </NavItem>
     );

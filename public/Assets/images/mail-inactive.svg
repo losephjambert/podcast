@@ -1,0 +1,12 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>show</title>
+  <g>
+    <g>
+      <polygon points="66.2 43.16 61 40.15 47.96 32.63 37.92 50.01 50.96 57.54 56.16 60.54 68.86 67.88 78.9 50.49 66.2 43.16" fill="none" stroke="#bf00fe" stroke-miterlimit="10" stroke-width="2.5"/>
+      <polygon points="66.2 43.16 61 40.15 47.96 32.63 46.02 36 54.25 51.84 59.46 54.84 76.96 53.86 78.9 50.49 66.2 43.16" fill="none" stroke="#bf00fe" stroke-miterlimit="10" stroke-width="2.5"/>
+    </g>
+    <line x1="37.45" y1="43.57" x2="19.84" y2="43.57" fill="none" stroke="#bf00fe" stroke-miterlimit="10" stroke-width="2.5"/>
+    <line x1="34.19" y1="49.77" x2="19.84" y2="49.77" fill="none" stroke="#bf00fe" stroke-miterlimit="10" stroke-width="2.5"/>
+    <line x1="37.45" y1="55.97" x2="19.84" y2="55.97" fill="none" stroke="#bf00fe" stroke-miterlimit="10" stroke-width="2.5"/>
+  </g>
+</svg>

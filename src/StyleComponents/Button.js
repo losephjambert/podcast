@@ -2,15 +2,17 @@ import styled from 'styled-components'
 import Colors from './Colors'
 
 const Button = styled.button`
-  display: inline-block;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
   outline: 0;
   border: 0;
-  box-shadow: 0 0 0 3px ${Colors.darkPurple};
-  height: inherit;
-  width: inherit;
-  background-color: ${props => props.selected ? Colors.darkPurple : Colors.lightPurple};
-  color: ${props => props.selected ? Colors.lightPurple : Colors.darkPurple};
+  box-shadow: inset 0 0 0 3px ${Colors.darkPurple};
+  height: 100%;
+  width: ${props => props.episode ? `inherit` : `100%`};
+  background-color: transparent;
   transition: 300ms;
+  color: inherit;
 `;
 
 
