@@ -31,7 +31,7 @@ const ButtonGroup = styled.div`
 
 const PlayerControls = styled.div`
   margin: 0 auto;
-  padding: 30px 0;
+  padding: 30px;
   display: flex;
     flex-flow: column wrap;
     align-items: center;
@@ -140,7 +140,7 @@ class AutoPlay extends React.Component {
         border: `3px solid ${Colors.darkPurple}`,
         display: 'block',
         position: 'absolute',
-        bottom: 'calc(50% - 12px)',
+        bottom: 'calc(50% - 14px)',
         transform: `translate3d(${thumbProgress}px,0px,0px)`
     }
     return (
@@ -182,10 +182,10 @@ class AutoPlay extends React.Component {
             />
         </PlayerElement>
         <ButtonGroup>
-          <PlayerButton playing={this.state.playing} onClick={this.handleToggle}>
+          <PlayerButton type="Play" playing={this.state.playing} onClick={!this.state.playing ? this.handleToggle : null}>
             Play
           </PlayerButton>
-          <PlayerButton playing={!this.state.playing} onClick={this.handleToggle}>
+          <PlayerButton type="Pause" playing={!this.state.playing} onClick={this.state.playing ? this.handleToggle : null}>
             Pause
           </PlayerButton>
         </ButtonGroup>
