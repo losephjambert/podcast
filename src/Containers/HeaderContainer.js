@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import Colors from '../StyleComponents/Colors'
 import SiteTitle from '../StyleComponents/SiteTitle'
-import FakeInput from '../StyleComponents/FakeInput'
 
 const Header = styled.header`
 
@@ -44,9 +43,7 @@ class HeaderContainer extends Component {
           <SiteTitle>Trust Issues</SiteTitle>
         </FixedTopBar>
         <HeaderContentContainer>
-          <FakeLabel>Send To:</FakeLabel><FakeInput/>
-          <FakeLabel>Copy To:</FakeLabel><FakeInput/>
-          <FakeLabel>Subject:</FakeLabel><FakeInput/>
+        blah blah blah
         </HeaderContentContainer>
       </Header>
     );

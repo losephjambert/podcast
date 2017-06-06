@@ -4,14 +4,14 @@ import Colors from '../StyleComponents/Colors'
 import styled from 'styled-components'
 import Button from '../StyleComponents/Button';
 import Range from '../StyleComponents/Range';
-import FakeInput from '../StyleComponents/FakeInput';
+import FakeInput from '../Components/FakeInput';
 import raf from 'raf' // requestAnimationFrame polyfill
 import { mmssTime } from '../helpers.js'
 
 const PlayerElement = styled.div`
   display:flex;
     align-items:center;
-  padding:15px;
+  padding: 15px;
   width:100%;
 `
 
@@ -30,24 +30,26 @@ const ButtonGroup = styled.div`
 `
 
 const PlayerControls = styled.div`
-  width: 75%;
   margin: 0 auto;
-  padding: 30px;
+  padding: 30px 0;
   display: flex;
     flex-flow: column wrap;
     align-items: center;
 `;
 
-const PlayerLabel = styled.label`
+const PlayerLabel = styled.div`
   color: ${Colors.darkPurple};
-  padding: 0px 10px;
+  width: ${(props) => props.width};
+  min-width:${(props) => props.width};
+  text-align: ${(props) => props.align};
+  padding-${(props) => props.align === "right" ? "left" : "right"} : 10px;
 `;
 
 const trackStyle = {
-  width: "500px",
-  height: '3px',
-  backgroundColor: `${Colors.darkPurple}`,
-  position: 'relative',
+    width: "100%",
+    height: "3px",
+    backgroundColor: `${Colors.darkPurple}`,
+    position: "relative"
 }
 
 class AutoPlay extends React.Component {
@@ -68,7 +70,6 @@ class AutoPlay extends React.Component {
     this.handleStop = this.handleStop.bind(this)
     this.renderSeekPos = this.renderSeekPos.bind(this)
   }
-
   componentDidUpdate(prevProps){
     if(this.props.src !== prevProps.src) {
       this.handleToggle()
@@ -130,7 +131,7 @@ class AutoPlay extends React.Component {
   }
 
   render () {
-    const thumbProgress = this.state.seek ? this.state.seek : 0;
+    const thumbProgress = this.refs.track ? (this.state.seek / this.state.duration) * this.refs.track.offsetWidth : null;
     const thumbStyle = {
         height: '24px',
         width: '10px',
@@ -144,11 +145,11 @@ class AutoPlay extends React.Component {
     return (
       <PlayerControls>
         <PlayerElement>
-          <PlayerLabel>Title: </PlayerLabel>
-          <FakeInput />
+          <PlayerLabel align="left">Title: </PlayerLabel>
+          <FakeInput value={this.props.src.title || "We have trust issues"}/>
         </PlayerElement>
         <PlayerElement>
-          <PlayerLabel>{mmssTime(this.state.seek)}</PlayerLabel>
+          <PlayerLabel align="left" width="50px">{mmssTime(this.state.seek)}</PlayerLabel>
           {
             this.props.src.enclosure ?
             <ReactHowler
@@ -163,13 +164,13 @@ class AutoPlay extends React.Component {
             />
             : null
           }
-          <div style={trackStyle}>
+          <div style={trackStyle} ref="track">
             <div key={thumbProgress} style={thumbStyle}></div>
           </div>
-          <PlayerLabel>{ mmssTime(this.state.duration)}</PlayerLabel>
+          <PlayerLabel align="right">{ mmssTime(this.state.duration)}</PlayerLabel>
         </PlayerElement>
         <PlayerElement>
-            <PlayerLabel>VOLUME:</PlayerLabel>
+            <PlayerLabel align="left">VOLUME</PlayerLabel>
             <Range
               type='range'
               min='0'
@@ -178,7 +179,6 @@ class AutoPlay extends React.Component {
               value={this.state.volume}
               onChange={e => this.setState({volume: parseFloat(e.target.value)})}
             />
-          <PlayerLabel>{this.state.volume.toFixed(2)}</PlayerLabel>
         </PlayerElement>
         <ButtonGroup>
           <PlayerButton playing={this.state.playing} onClick={this.handleToggle}>
