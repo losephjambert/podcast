@@ -17,14 +17,6 @@ const NavList = styled.ul`
   justify-content: space-between;
   align-item: center;
   margin: 35px auto 0;
-  @media screen and (min-width: 600px){
-    position: fixed;
-      z-index: 100;
-    width: 80px;
-    height: 300px;
-    display: flex;
-    flex-flow: column nowrap;
-  }
 `;
 
 const NavItem = styled.li`
