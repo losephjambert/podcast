@@ -9,7 +9,6 @@ import Colors from '../StyleComponents/Colors'
 const BackgroundWrapper = styled.div`
   position: fixed;
     ${props => props.sides.map((side) => `${side}:${props.fixed};`)}
-
   color: ${Colors.darkPurple};
   background-color: white;
 `;
