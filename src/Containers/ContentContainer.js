@@ -48,7 +48,7 @@ class ContentContainer extends Component {
     this.playEpisode = this.playEpisode.bind(this);
     this.showRegion = this.showRegion.bind(this);
     this.setBackgroundStyle = this.setBackgroundStyle.bind(this); 
-    this.marqueeDate = this.marqueeDate.bind(this);
+    this.theDate = this.theDate.bind(this);
 
     this.state = {
       "navItems" : [
@@ -149,7 +149,7 @@ class ContentContainer extends Component {
     return backgroundImageStyle;
   }
 
-  marqueeDate(){
+  theDate(){
     let today = new Date();
     let dd = today.getDate();
     let mm = today.getMonth()+1;
@@ -254,11 +254,11 @@ class ContentContainer extends Component {
         { this.state.playingEpisode.title ?
           <PlayerContainer playingEpisode={ this.state.playingEpisode } />
         : null}
-        <FooterContainer />
+        <FooterContainer theDate={this.theDate} />
         </UIWindow>
         : null}
         <BackgroundContainer
-          marqueeDate={this.marqueeDate}
+          theDate={this.theDate}
           playingEpisode={ this.state.playingEpisode }
           marquee={ this.state.content.marquee }
           backgroundLeft={ this.state.content.backgroundLeft }
