@@ -20,7 +20,9 @@ const UIWindowContainer = styled.div`
   position: relative;
   max-width: 600px;
   max-width: 600px;
-  margin: 5vh auto 0;
+  @media screen and (min-width: 600px){
+    margin: 5vh auto 0;
+  }
 `;
 
 const UIWindow = styled.div`

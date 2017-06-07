@@ -12,6 +12,10 @@ const BackgroundWrapper = styled.div`
     z-index: -10;
   color: ${Colors.darkPurple};
   background-color: white;
+  display: none;
+  @media screen and (min-width: 600px){
+    display: block;
+  }
 `;
 
 const BackGroundElements = styled.div`
