@@ -31,6 +31,7 @@ const ButtonGroup = styled.div`
 `
 
 const PlayerControls = styled.div`
+  background-color: ${Colors.mediumPurple};
   margin: 0 auto;
   padding: 30px;
   display: flex;

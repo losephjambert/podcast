@@ -21,12 +21,14 @@ const PlayerWrapper = styled.div`
   min-height: 40px;
   background-color: ${Colors.lightPurple};
   box-shadow: inset 0 0 0 5px ${Colors.darkPurple};
-`;
-
-const HideOrShowPlayer = styled.div`
-  height: ${(props) => props.expanded ? "100%" : "0px"};
-  width: 100%;
-  background-color: ${Colors.mediumPurple};
+  &.hidden {
+    transition: .5s;
+    transform: translateY(calc(100% - 43px));
+  }
+  &.visible {
+    transition: .5s;
+    transform: translateY(0%);
+  }
 `;
 
 class PlayerContainer extends Component {
@@ -44,11 +46,11 @@ class PlayerContainer extends Component {
 
   render() {
     return (
-      <PlayerWrapper>
+      <PlayerWrapper className={this.state.expanded ? "visible" : "hidden"}>
         <PlayerHeader onClick={this.togglePlayer}>{ this.state.expanded ? "-" : "+"} TRUST PLAYER</PlayerHeader>
-        <HideOrShowPlayer expanded={this.state.expanded}>
+        <div style={{width: "100%"}}>
           <Player src={this.props.playingEpisode}/>
-        </HideOrShowPlayer>
+        </div>
       </PlayerWrapper>
     );
   }
