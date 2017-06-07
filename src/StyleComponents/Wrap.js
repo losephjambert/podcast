@@ -11,6 +11,15 @@ const Wrap = styled.div`
   @media screen and (min-width:375px){
     padding: 65px 20px 15px;
   }
+  *::-moz-selection {
+    color: ${Colors.lightPurple};
+    background: ${Colors.darkPurple};
+  }
+
+  *::selection {
+    color: ${Colors.lightPurple};
+    background: ${Colors.darkPurple};
+  }
 `;
 
 export default Wrap;
