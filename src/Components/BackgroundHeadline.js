@@ -6,6 +6,8 @@ const ArticleHeadline = styled.h2`
   text-decoration: underline;
   padding: 0 0 15px 0;
   line-height:1.3em;
+  font-weight: 300;
+  font-size: 2.1vmax
 `;
 
 class BackgroundHeadline extends Component {
