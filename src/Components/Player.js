@@ -13,6 +13,7 @@ const PlayerElement = styled.div`
     align-items:center;
   padding: 15px;
   width:100%;
+
 `
 
 const PlayerButton = Button.extend`
@@ -35,6 +36,7 @@ const PlayerControls = styled.div`
   display: flex;
     flex-flow: column wrap;
     align-items: center;
+  box-shadow: inset 0 0 0 5px ${Colors.darkPurple};
 `;
 
 const PlayerLabel = styled.div`
@@ -58,7 +60,7 @@ class AutoPlay extends React.Component {
     super(props)
 
     this.state = {
-      playing: false,
+      playing: true,
       loaded: false,
       volume: 1.0,
       duration: 0,

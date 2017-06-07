@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { CSSTransitionGroup } from 'react-transition-group'
 import marked from 'marked'
+import styled from 'styled-components';
+import Colors from '../StyleComponents/Colors'
 
 import OpacityContainer from '../StyleComponents/OpacityContainer'
 
@@ -12,12 +14,18 @@ import SubmissionContainer from './SubmissionContainer'
 import PlayerContainer from './PlayerContainer'
 import BackgroundContainer from './BackgroundContainer'
 
+const ContentWrapper = styled.div`
+  background-color: ;
+  width:100%;
+  height: 100%;
+`;
+
 class ContentContainer extends Component {
   constructor(props) {
     super(props);
     this.playEpisode = this.playEpisode.bind(this);
     this.showRegion = this.showRegion.bind(this);
-    this.setBackgroundStyle = this.setBackgroundStyle.bind(this); 
+    this.setBackgroundStyle = this.setBackgroundStyle.bind(this);
 
     this.state = {
       "navItems" : [
@@ -136,29 +144,43 @@ class ContentContainer extends Component {
           transitionAppear={true}
           transitionAppearTimeout={300}
           transitionEnterTimeout={300}
-          transitionLeaveTimeout={300}>
+          transitionLeaveTimeout={100}>
             {this.state.selectedRegion === "episodes" ?
-              <OpacityContainer>
+              <OpacityContainer key={"episodes"}>
                 {EPISODES}
               </OpacityContainer>
             : null}
+        </CSSTransitionGroup>
+        <CSSTransitionGroup
+          transitionName="is-showing"
+          transitionAppear={true}
+          transitionAppearTimeout={300}
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={100}>
             {this.state.selectedRegion === "submit" ?
-              <OpacityContainer>
+              <OpacityContainer key={"submit"}>
                 {SUBMIT}
               </OpacityContainer>
             : null}
+        </CSSTransitionGroup>
+        <CSSTransitionGroup
+          transitionName="is-showing"
+          transitionAppear={true}
+          transitionAppearTimeout={300}
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={100}>
             {this.state.selectedRegion === "about" ?
-              <OpacityContainer>
+              <OpacityContainer key={"about"}>
                 {ABOUT}
               </OpacityContainer>
             : null}
         </CSSTransitionGroup>
-
-        <PlayerContainer playingEpisode={ this.state.playingEpisode } />
+        { this.state.playingEpisode.title ?
+          <PlayerContainer playingEpisode={ this.state.playingEpisode } />
+        : null}
         </div>
         : null}
         <BackgroundContainer
-          playingEpisode={ this.state.playingEpisode }
           marquee={ this.state.content.marquee }
           backgroundLeft={ this.state.content.backgroundLeft }
           backgroundRight={ this.state.content.backgroundRight }

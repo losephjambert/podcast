@@ -24,9 +24,8 @@ const PlayerWrapper = styled.div`
 `;
 
 const HideOrShowPlayer = styled.div`
-  display: ${(props) => props.expanded ? "block" : "none"};
+  height: ${(props) => props.expanded ? "100%" : "0px"};
   width: 100%;
-  box-shadow: inset 0 0 0 5px ${Colors.darkPurple};
   background-color: ${Colors.mediumPurple};
 `;
 
@@ -34,7 +33,7 @@ class PlayerContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: true
     };
     this.togglePlayer = this.togglePlayer.bind(this)
   }
