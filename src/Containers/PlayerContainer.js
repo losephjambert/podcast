@@ -29,6 +29,9 @@ const PlayerWrapper = styled.div`
     transition: .5s;
     transform: translateY(0%);
   }
+  @media screen and (min-width: 600px){
+    position: absolute;
+  }
 `;
 
 class PlayerContainer extends Component {

@@ -13,11 +13,38 @@ import AboutContainer from './AboutContainer'
 import SubmissionContainer from './SubmissionContainer'
 import PlayerContainer from './PlayerContainer'
 import BackgroundContainer from './BackgroundContainer'
+import HeaderContainer from './HeaderContainer';
+import FooterContainer from './FooterContainer';
 
-const ContentWrapper = styled.div`
-  background-color: ;
-  width:100%;
-  height: 100%;
+const UIWindowContainer = styled.div`
+  position: relative;
+  max-width: 600px;
+  max-width: 600px;
+  margin: 5vh auto 0;
+`;
+
+const UIWindow = styled.div`
+  position: relative;
+  padding: 65px 15px 15px;
+  box-shadow: 0 0 0 5px ${Colors.darkPurple};
+  background-color: ${Colors.mediumPurple};
+  @media screen and (min-width:375px){
+    padding: 60px 20px 0;
+  }
+  @media screen and (min-width: 600px){
+    height: 80vh;
+    overflow-y: scroll;
+    box-shadow: none;
+    border: 5px solid ${Colors.darkPurple};
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: ${Colors.lightPurple};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${Colors.darkPurple};
+  }
 `;
 
 class ContentContainer extends Component {
@@ -26,7 +53,7 @@ class ContentContainer extends Component {
     this.playEpisode = this.playEpisode.bind(this);
     this.showRegion = this.showRegion.bind(this);
     this.setBackgroundStyle = this.setBackgroundStyle.bind(this); 
-    this.marqueeDate = this.marqueeDate.bind(this);
+    this.theDate = this.theDate.bind(this);
 
     this.state = {
       "navItems" : [
@@ -127,7 +154,7 @@ class ContentContainer extends Component {
     return backgroundImageStyle;
   }
 
-  marqueeDate(){
+  theDate(){
     let today = new Date();
     let dd = today.getDate();
     let mm = today.getMonth()+1;
@@ -185,8 +212,9 @@ class ContentContainer extends Component {
     const ABOUT = <AboutContainer body={ this.state.content.about.body } />
     return (
       <div>
-        { true ?
-        <div>
+        <UIWindowContainer> 
+        <UIWindow>
+        <HeaderContainer />
         <NavContainer
           setBackgroundStyle={ this.setBackgroundStyle }
           showRegion={ this.showRegion }
@@ -228,13 +256,15 @@ class ContentContainer extends Component {
               </OpacityContainer>
             : null}
         </CSSTransitionGroup>
+        <FooterContainer theDate={this.theDate} />
+        </UIWindow>
         { this.state.playingEpisode.title ?
           <PlayerContainer playingEpisode={ this.state.playingEpisode } />
         : null}
-        </div>
-        : null}
+        </UIWindowContainer>
+
         <BackgroundContainer
-          marqueeDate={this.marqueeDate}
+          theDate={this.theDate}
           playingEpisode={ this.state.playingEpisode }
           marquee={ this.state.content.marquee }
           backgroundLeft={ this.state.content.backgroundLeft }

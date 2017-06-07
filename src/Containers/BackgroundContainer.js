@@ -109,7 +109,7 @@ class BackgroundContainer extends Component {
           <BackgroundTitle>We Have Trust Issues</BackgroundTitle>
           </BackgroundTitleWrapper>
           <DateComponent className="marquee3k" data-speed="0.05">
-            <Marquee headline={ this.props.marqueeDate() }/>
+            <Marquee headline={ this.props.theDate() }/>
           </DateComponent>
           <MarqueeHeadline className="marquee3k" data-speed="0.15" data-pausable="true">
             <Marquee headline={this.props.marquee.body} />
