@@ -11,7 +11,7 @@ const BackgroundWrapper = styled.div`
     ${props => props.sides.map((side) => `${side}:${props.fixed};`)}
 
   color: ${Colors.darkPurple};
-  background-color: ${Colors.lightPurple};
+  background-color: white;
 `;
 
 const BackGroundElements = styled.div`
