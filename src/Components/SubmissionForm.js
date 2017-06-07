@@ -16,6 +16,10 @@ const Form = styled.form`
   box-shadow: 0 0 0 3px ${Colors.lightPurple};
   background-color: ${Colors.darkPurple};
   padding: 15px;
+  font-weight: 300;
+  @media screen and (min-width: 600px){
+    padding: 15px 20px 10px; 
+  }
 `;
 
 const TextArea = styled.textarea`
@@ -23,9 +27,12 @@ const TextArea = styled.textarea`
   resize: none;
   outline: none;
   margin-top:15px;
+  padding: 15px;
   background-color: ${Colors.lightPurple};
   font-family: ${Fonts.poppins};
   color: ${Colors.darkPurple};
+  font-size: 16px;
+  font-weight: 300;
 `;
 
 const SubmitButton = Button.extend`

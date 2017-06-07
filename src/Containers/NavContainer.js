@@ -16,7 +16,8 @@ const NavList = styled.ul`
   display: flex;
   justify-content: space-between;
   align-item: center;
-  margin: 35px 0;
+  margin: 40px auto 35px;
+  width: 85%;
 `;
 
 const NavItem = styled.li`

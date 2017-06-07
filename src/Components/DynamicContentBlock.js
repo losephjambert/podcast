@@ -12,6 +12,9 @@ const AboutDescription = styled.div`
   font-weight: 300;
   line-height: 1.6;
   p{margin-bottom: 15px;}
+  @media screen and (min-width: 600px){
+    padding: 25px 20px;
+  }
 `;
 
 function DynamicContentBlock(props) {

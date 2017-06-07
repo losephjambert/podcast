@@ -18,10 +18,12 @@ import FooterContainer from './FooterContainer';
 
 const UIWindowContainer = styled.div`
   position: relative;
-  max-width: 600px;
-  max-width: 600px;
+  max-width: 420px;
   @media screen and (min-width: 600px){
     margin: 5vh auto 0;
+    right: 170px;
+    position: fixed;
+    overflow: hidden;
   }
 `;
 
