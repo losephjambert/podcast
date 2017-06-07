@@ -44,7 +44,7 @@ const PlayerWrapper = styled.div`
     transform: translateY(0%);
     transition: transform 500ms;
   }
-  @media screen and (min-width: 600px){
+  @media screen and (min-width: 420px){
     position: absolute;
   }
 `;
@@ -59,7 +59,7 @@ class PlayerContainer extends Component {
   }
 
   togglePlayer() {
-    this.setState({expanded: `${this.state.expanded == "visible" ? "hidden" : "visible"}`})
+    this.setState({expanded: `${!this.state.expanded || this.state.expanded == "visible" ? "hidden" : "visible"}`})
   }
 
   render() {
