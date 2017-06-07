@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Colors from '../StyleComponents/Colors'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 import Player from '../Components/Player';
 
@@ -25,9 +26,12 @@ const PlayerWrapper = styled.div`
     transition: .5s;
     transform: translateY(calc(100% - 43px));
   }
-  &.visible {
-    transition: .5s;
+  &.player-appear {
+    transform: translateY(calc(100% - 43px));
+  }
+  &.player-appear.player-appear-active, &.visible {
     transform: translateY(0%);
+    transition: transform 500ms;
   }
   @media screen and (min-width: 600px){
     position: absolute;
@@ -38,23 +42,30 @@ class PlayerContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: true
+      expanded: null
     };
     this.togglePlayer = this.togglePlayer.bind(this)
   }
 
   togglePlayer() {
-    this.setState({expanded: !this.state.expanded})
+    this.setState({expanded: `${this.state.expanded == "visible" ? "hidden" : "visible"}`})
   }
 
   render() {
     return (
-      <PlayerWrapper className={this.state.expanded ? "visible" : "hidden"}>
-        <PlayerHeader onClick={this.togglePlayer}>{ this.state.expanded ? "-" : "+"} TRUST PLAYER</PlayerHeader>
+      <CSSTransitionGroup
+            transitionName="player"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
+            transitionEnter={false}
+            transitionLeave={false}>
+      <PlayerWrapper key={"player"} className={this.state.expanded}>
+        <PlayerHeader onClick={this.togglePlayer}>{ this.state.expanded == "hidden" ? "+" : "-"} TRUST PLAYER</PlayerHeader>
         <div style={{width: "100%"}}>
           <Player src={this.props.playingEpisode}/>
         </div>
       </PlayerWrapper>
+      </CSSTransitionGroup>
     );
   }
 }

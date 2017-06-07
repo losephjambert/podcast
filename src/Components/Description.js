@@ -10,9 +10,9 @@ const DescriptionWrapper = styled.div`
     line-height: 1.3em;
     text-align: center;
     font-weight: 300;
-    width:100%;
+    width: 100%;
     p {
-      padding: 10px;
+      padding: 5px;
     }
     a {
         color: ${Colors.mediumPurple};
@@ -20,8 +20,8 @@ const DescriptionWrapper = styled.div`
 `;
 
 const Expanded = styled.div`
-    p{
-       padding: 10px;
+    p {
+       padding: 5px;
     }
 `;
 
