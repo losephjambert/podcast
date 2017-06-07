@@ -34,9 +34,9 @@ const SubmitButton = Button.extend`
   min-width: 130px;
   font-weight: 500;
   font-size: 16px;
-  background-color: ${Colors.lightPurple};
-  color: ${Colors.darkPurple};
-  box-shadow: 0 0 0 3px ${Colors.darkPurple};
+  background-color: ${(props) => props.hasInput ? Colors.darkPurple : Colors.lightPurple};
+  color: ${(props) => props.hasInput ? Colors.lightPurple : Colors.darkPurple};
+  box-shadow: 0 0 0 3px ${(props) => props.hasInput ? Colors.lightPurple : Colors.darkPurple};
 `;
 
 function SubmissionForm(props) {
@@ -52,7 +52,7 @@ function SubmissionForm(props) {
             rows="10"
             onChange={ props.handleInputChange }>
           </TextArea>
-          <SubmitButton type="submit" value="Submit" >send</SubmitButton>
+          <SubmitButton hasInput={props.hasInput} type="submit" value="Submit">send</SubmitButton>
       </Form>
     </FormWrapper>
   );
