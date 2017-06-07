@@ -434,3 +434,7 @@ body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,li,dd,dt,table,section{
 ul,ol,li,dl{
   list-style-type: none;
 }
+
+a{
+  font-weight: 500;
+}

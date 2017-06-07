@@ -11,6 +11,7 @@ const Button = styled.button`
   background-color: transparent;
   transition: 300ms;
   color: inherit;
+  &:hover{cursor: pointer;}
 `;
 
 

@@ -11,8 +11,14 @@ const FooterContent = styled.ul`
   display: flex; 
     justify-content: space-between;
     align-items: center;
-  margin: 50px 0 15px;
-  font-size: 14px;
+  padding: 25px 0 15px;
+  font-size: 10px;
+  @media screen and (min-width:375px){
+    font-size: 14px;
+  }
+  @media screen and (min-width:375px){
+    margin-bottom: 50px;
+  }
 `;
 
 const FooterItem = styled.li`

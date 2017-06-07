@@ -6,8 +6,19 @@ import { CSSTransitionGroup } from 'react-transition-group'
 import Player from '../Components/Player';
 
 const PlayerHeader = styled.header`
-  color: ${Colors.darkPurple};
   padding:10px;
+`;
+
+const PlayerTitle = styled.button`
+  font-size: 16px;
+  font-weight: 600;
+  transform: translateY(3px);
+  color: ${Colors.darkPurple};
+  outline: none;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  &:hover{cursor: pointer;}
 `;
 
 const PlayerWrapper = styled.div`
@@ -60,7 +71,9 @@ class PlayerContainer extends Component {
             transitionEnter={false}
             transitionLeave={false}>
       <PlayerWrapper key={"player"} className={this.state.expanded}>
-        <PlayerHeader onClick={this.togglePlayer}>{ this.state.expanded == "hidden" ? "+" : "-"} TRUST PLAYER</PlayerHeader>
+        <PlayerHeader onClick={this.togglePlayer}>
+          <PlayerTitle>{ this.state.expanded == "hidden" ? "+" : "-"} TRUST PLAYER</PlayerTitle>
+        </PlayerHeader>
         <div style={{width: "100%"}}>
           <Player src={this.props.playingEpisode}/>
         </div>
