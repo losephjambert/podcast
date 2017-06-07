@@ -13,12 +13,8 @@ const Title = styled.div`
 `;
 
 const Episodes = styled.ul`
-  margin: 0 6px;
+  margin: 25px 6px;
   box-shadow:  0 0 0 6px ${Colors.darkPurple};
-  @media screen and (min-width: 600px){
-    width: 400px;
-    margin: 0 auto;
-  }
 `;
 
 const Episode = styled.li`
@@ -31,6 +27,9 @@ const Episode = styled.li`
   background-color: ${Colors.darkPurple};
   color: ${Colors.lightPurple};
   font-size: 18px;
+  @media screen and (min-width:600px){
+    padding: 15px 35px 10px;
+  }
 `;
 
 const PlayButton = Button.extend`

@@ -23,22 +23,16 @@ const UIWindowContainer = styled.div`
   background-color: ${Colors.mediumPurple};
   padding: 15px;
   @media screen and (min-width: 600px){
-    margin: 5vh auto;
+    margin: 0 auto;
     padding: 65px 15px 15px;
+    overflow-y: scroll;
+    max-height: 700px;
+    height: 500px;
   }
 `;
 
 const UIWindow = styled.div`
   position: relative;
-  @media screen and (min-width: 600px){
-    overflow-y: scroll;
-    overflow-x: hidden;
-    max-width: 475px;
-    height: 300px;
-    margin-top: 50px;
-    box-shadow: none;
-    border: 5px solid ${Colors.darkPurple};
-  }
   &::-webkit-scrollbar {
     width: 6px;
     background-color: ${Colors.lightPurple};
@@ -52,6 +46,7 @@ const UIWindow = styled.div`
 const TransitionBlock = styled.div`
   @media screen and (min-width: 600px){
     max-width: 475px;
+    margin-left: auto;
   }
 `;
 

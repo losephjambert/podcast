@@ -18,8 +18,8 @@ const NavList = styled.ul`
   align-item: center;
   margin: 35px auto 0;
   @media screen and (min-width: 600px){
-    position: absolute;
-    right: 25px;
+    position: fixed;
+      z-index: 100;
     width: 80px;
     height: 300px;
     display: flex;
