@@ -20,9 +20,9 @@ class ApplicationContainer extends Component {
         { this.state.comingSoon === true ?
           <ComingSoon />
         : <div>
-            {/*<HeaderContainer />*/}
+            <HeaderContainer />
             <ContentContainer />
-            {/*<FooterContainer />*/}
+            <FooterContainer />
           </div>
         }
       </Wrap>

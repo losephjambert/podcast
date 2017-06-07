@@ -185,7 +185,7 @@ class ContentContainer extends Component {
     const ABOUT = <AboutContainer body={ this.state.content.about.body } />
     return (
       <div>
-        { false ?
+        { true ?
         <div>
         <NavContainer
           setBackgroundStyle={ this.setBackgroundStyle }
