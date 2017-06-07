@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import Wrap from '../StyleComponents/Wrap';
-
-import ComingSoon from '../Components/ComingSoon';
-import HeaderContainer from './HeaderContainer';
+import ComingSoon from '../Components/ComingSoon'
 import ContentContainer from './ContentContainer';
-import FooterContainer from './FooterContainer';
 
 class ApplicationContainer extends Component {
   constructor(props) {
@@ -20,9 +17,7 @@ class ApplicationContainer extends Component {
         { this.state.comingSoon === true ?
           <ComingSoon />
         : <div>
-            <HeaderContainer />
             <ContentContainer />
-            <FooterContainer />
           </div>
         }
       </Wrap>

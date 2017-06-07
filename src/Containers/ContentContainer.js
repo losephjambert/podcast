@@ -13,11 +13,32 @@ import AboutContainer from './AboutContainer'
 import SubmissionContainer from './SubmissionContainer'
 import PlayerContainer from './PlayerContainer'
 import BackgroundContainer from './BackgroundContainer'
+import HeaderContainer from './HeaderContainer';
+import FooterContainer from './FooterContainer';
 
-const ContentWrapper = styled.div`
-  background-color: ;
-  width:100%;
-  height: 100%;
+const UIWindow = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 15px;
+  box-shadow: 0 0 0 5px ${Colors.darkPurple};
+  background-color: ${Colors.mediumPurple};
+  @media screen and (min-width:375px){
+    padding: 65px 20px 15px;
+  }
+  @media screen and (min-width: 600px){
+    height: 80vh;
+    overflow-y: scroll;
+    box-shadow: none;
+    border: 5px solid ${Colors.darkPurple};
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: ${Colors.lightPurple};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${Colors.darkPurple};
+  }
 `;
 
 class ContentContainer extends Component {
@@ -186,7 +207,8 @@ class ContentContainer extends Component {
     return (
       <div>
         { true ?
-        <div>
+        <UIWindow>
+        <HeaderContainer />
         <NavContainer
           setBackgroundStyle={ this.setBackgroundStyle }
           showRegion={ this.showRegion }
@@ -231,7 +253,8 @@ class ContentContainer extends Component {
         { this.state.playingEpisode.title ?
           <PlayerContainer playingEpisode={ this.state.playingEpisode } />
         : null}
-        </div>
+        <FooterContainer />
+        </UIWindow>
         : null}
         <BackgroundContainer
           marqueeDate={this.marqueeDate}
