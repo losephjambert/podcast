@@ -44,7 +44,7 @@ const PlayerWrapper = styled.div`
     transform: translateY(0%);
     transition: transform 500ms;
   }
-  @media screen and (min-width: 600px){
+  @media screen and (min-width: 420px){
     position: absolute;
   }
 `;

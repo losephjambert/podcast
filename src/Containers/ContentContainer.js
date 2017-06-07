@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { CSSTransitionGroup } from 'react-transition-group'
 import marked from 'marked'
-import styled from 'styled-components';
+import Draggable from 'react-draggable'
+import styled from 'styled-components'
 import Colors from '../StyleComponents/Colors'
 
 import OpacityContainer from '../StyleComponents/OpacityContainer'
@@ -13,13 +14,13 @@ import AboutContainer from './AboutContainer'
 import SubmissionContainer from './SubmissionContainer'
 import PlayerContainer from './PlayerContainer'
 import BackgroundContainer from './BackgroundContainer'
-import HeaderContainer from './HeaderContainer';
-import FooterContainer from './FooterContainer';
+import HeaderContainer from './HeaderContainer'
+import FooterContainer from './FooterContainer'
 
 const UIWindowContainer = styled.div`
   position: relative;
   max-width: 420px;
-  @media screen and (min-width: 600px){
+  @media screen and (min-width: 420px){
     margin: 5vh auto 0;
     right: 170px;
     position: fixed;
@@ -35,7 +36,7 @@ const UIWindow = styled.div`
   @media screen and (min-width:375px){
     padding: 60px 20px 0;
   }
-  @media screen and (min-width: 600px){
+  @media screen and (min-width: 420px){
     height: 80vh;
     overflow-y: scroll;
     box-shadow: none;
@@ -54,10 +55,12 @@ const UIWindow = styled.div`
 class ContentContainer extends Component {
   constructor(props) {
     super(props);
+
     this.playEpisode = this.playEpisode.bind(this);
     this.showRegion = this.showRegion.bind(this);
     this.setBackgroundStyle = this.setBackgroundStyle.bind(this); 
     this.theDate = this.theDate.bind(this);
+    this.parseMarkdown = this.parseMarkdown.bind(this)
 
     this.state = {
       "navItems" : [
@@ -101,9 +104,11 @@ class ContentContainer extends Component {
           "headline":"",
           "body":""
         },
-      }
+      },
+      "width": "",
+      "height": "",
+      "canDrag": false
     };
-    this.parseMarkdown = this.parseMarkdown.bind(this)
   }
   parseMarkdown(rss){
     rss.data.items.map((item, index) =>
@@ -216,57 +221,58 @@ class ContentContainer extends Component {
     const ABOUT = <AboutContainer body={ this.state.content.about.body } />
     return (
       <div>
-        <UIWindowContainer> 
-        <UIWindow>
-        <HeaderContainer />
-        <NavContainer
-          setBackgroundStyle={ this.setBackgroundStyle }
-          showRegion={ this.showRegion }
-          navItems={ this.state.navItems }
-          selectedRegion={ this.state.selectedRegion }/>
-        <CSSTransitionGroup
-          transitionName="is-showing"
-          transitionAppear={true}
-          transitionAppearTimeout={300}
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={100}>
-            {this.state.selectedRegion === "episodes" ?
-              <OpacityContainer key={"episodes"}>
-                {EPISODES}
-              </OpacityContainer>
-            : null}
-        </CSSTransitionGroup>
-        <CSSTransitionGroup
-          transitionName="is-showing"
-          transitionAppear={true}
-          transitionAppearTimeout={300}
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={100}>
-            {this.state.selectedRegion === "submit" ?
-              <OpacityContainer key={"submit"}>
-                {SUBMIT}
-              </OpacityContainer>
-            : null}
-        </CSSTransitionGroup>
-        <CSSTransitionGroup
-          transitionName="is-showing"
-          transitionAppear={true}
-          transitionAppearTimeout={300}
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={100}>
-            {this.state.selectedRegion === "about" ?
-              <OpacityContainer key={"about"}>
-                {ABOUT}
-              </OpacityContainer>
-            : null}
-        </CSSTransitionGroup>
-        <FooterContainer theDate={this.theDate} />
-        </UIWindow>
-        { this.state.playingEpisode.title ?
-          <PlayerContainer playingEpisode={ this.state.playingEpisode } />
-        : null}
-        </UIWindowContainer>
-
+        <Draggable handle={".handle"}>
+          <UIWindowContainer> 
+          <UIWindow>
+          <HeaderContainer/>
+          <NavContainer
+            setBackgroundStyle={ this.setBackgroundStyle }
+            showRegion={ this.showRegion }
+            navItems={ this.state.navItems }
+            selectedRegion={ this.state.selectedRegion }/>
+          <CSSTransitionGroup
+            transitionName="is-showing"
+            transitionAppear={true}
+            transitionAppearTimeout={300}
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={100}>
+              {this.state.selectedRegion === "episodes" ?
+                <OpacityContainer key={"episodes"}>
+                  {EPISODES}
+                </OpacityContainer>
+              : null}
+          </CSSTransitionGroup>
+          <CSSTransitionGroup
+            transitionName="is-showing"
+            transitionAppear={true}
+            transitionAppearTimeout={300}
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={100}>
+              {this.state.selectedRegion === "submit" ?
+                <OpacityContainer key={"submit"}>
+                  {SUBMIT}
+                </OpacityContainer>
+              : null}
+          </CSSTransitionGroup>
+          <CSSTransitionGroup
+            transitionName="is-showing"
+            transitionAppear={true}
+            transitionAppearTimeout={300}
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={100}>
+              {this.state.selectedRegion === "about" ?
+                <OpacityContainer key={"about"}>
+                  {ABOUT}
+                </OpacityContainer>
+              : null}
+          </CSSTransitionGroup>
+          <FooterContainer theDate={this.theDate} />
+          </UIWindow>
+          { this.state.playingEpisode.title ?
+            <PlayerContainer playingEpisode={ this.state.playingEpisode } />
+          : null}
+          </UIWindowContainer>
+        </Draggable>
         <BackgroundContainer
           theDate={this.theDate}
           playingEpisode={ this.state.playingEpisode }
