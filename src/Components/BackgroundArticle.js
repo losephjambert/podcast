@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import Colors from '../StyleComponents/Colors'
 
 const Article = styled.div`
-  line-height:1.3em;
-  font-size:14px;
+  line-height:1.5em;
+  font-size: 16px;
+  font-weight: 300;
   a {
     color: ${Colors.darkPurple};
   }

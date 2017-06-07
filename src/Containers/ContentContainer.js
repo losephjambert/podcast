@@ -25,7 +25,8 @@ class ContentContainer extends Component {
     super(props);
     this.playEpisode = this.playEpisode.bind(this);
     this.showRegion = this.showRegion.bind(this);
-    this.setBackgroundStyle = this.setBackgroundStyle.bind(this);
+    this.setBackgroundStyle = this.setBackgroundStyle.bind(this); 
+    this.marqueeDate = this.marqueeDate.bind(this);
 
     this.state = {
       "navItems" : [
@@ -126,6 +127,58 @@ class ContentContainer extends Component {
     return backgroundImageStyle;
   }
 
+  marqueeDate(){
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1;
+    let yyyy = today.getFullYear();
+
+    switch (mm){
+      case 1:
+        mm = 'January'
+        break;
+      case 2:
+        mm = 'February'
+        break;
+      case 3:
+        mm = 'March'
+        break;
+      case 4:
+        mm = 'April'
+        break;
+      case 5:
+        mm = 'May'
+        break;
+      case 6:
+        mm = 'June'
+        break;
+      case 7:
+        mm = 'July'
+        break;
+      case 8:
+        mm = 'August'
+        break;
+      case 9:
+        mm = 'September'
+        break;
+      case 10:
+        mm = 'October'
+        break;
+      case 11:
+        mm = 'November'
+        break;
+      case 12:
+        mm = 'December'
+        break;
+    }
+
+    if(dd<10) { dd='0'+dd } 
+
+    if(mm<10) { mm='0'+mm } 
+
+    return `${mm}—${dd}—${yyyy}`
+  }
+
   render() {
     const EPISODES = <EpisodesContainer RSS={ this.state.RSS } playEpisode={ this.playEpisode } currentEpisodeIndex={ this.state.playingEpisode.number ? this.state.playingEpisode.number : null} />
     const SUBMIT = <SubmissionContainer description={ this.state.content.submissionDescription.body } />
@@ -181,6 +234,8 @@ class ContentContainer extends Component {
         </div>
         : null}
         <BackgroundContainer
+          marqueeDate={this.marqueeDate}
+          playingEpisode={ this.state.playingEpisode }
           marquee={ this.state.content.marquee }
           backgroundLeft={ this.state.content.backgroundLeft }
           backgroundRight={ this.state.content.backgroundRight }

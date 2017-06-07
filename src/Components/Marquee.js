@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
+import Marquee3k from 'marquee3000';
+import styled from 'styled-components'
+
+const MarqueeComponent = styled.div`
+  padding: 0 25px;
+`;
 
 class Marquee extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
+
+  componentDidUpdate(){
+    Marquee3k.init();
   }
 
   render() {
     return (
-      <p>{this.props.headline}</p>
+        <MarqueeComponent>{this.props.headline}</MarqueeComponent>
     );
   }
 }
