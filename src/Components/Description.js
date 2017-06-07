@@ -12,10 +12,16 @@ const DescriptionWrapper = styled.div`
     font-weight: 300;
     width:100%;
     p {
-        // adding padding to the description paragraph tags fuuucks this up
+      padding: 10px;
     }
     a {
         color: ${Colors.mediumPurple};
+    }
+`;
+
+const Expanded = styled.div`
+    p{
+       padding: 10px;
     }
 `;
 
@@ -55,9 +61,9 @@ class Description extends Component {
         return(
         <DescriptionWrapper>
             { !this.state.expanded ?
-            <Truncate lines={2} dangerouslySetInnerHTML={{ __html: this.props.item.description}}/>
+            <Truncate lines={5} dangerouslySetInnerHTML={{ __html: this.props.item.description}}/>
             :
-            <div dangerouslySetInnerHTML={{ __html: this.props.item.description}} />
+            <Expanded dangerouslySetInnerHTML={{ __html: this.props.item.description}} />
             }
             <MoreOrLessContainer>
               <MoreOrLess href='#' onClick={this.toggleLines}>{this.state.expanded ? "less" : "more"}</MoreOrLess>
