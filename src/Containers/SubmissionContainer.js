@@ -20,8 +20,9 @@ class SubmissionContainer extends Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
+    this.setState({hasInput: value ? true : false});
   }
 
   formIsValid() {
