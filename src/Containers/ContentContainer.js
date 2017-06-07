@@ -16,10 +16,15 @@ import BackgroundContainer from './BackgroundContainer'
 import HeaderContainer from './HeaderContainer';
 import FooterContainer from './FooterContainer';
 
-const UIWindow = styled.div`
+const UIWindowContainer = styled.div`
   position: relative;
   max-width: 600px;
+  max-width: 600px;
   margin: 5vh auto 0;
+`;
+
+const UIWindow = styled.div`
+  position: relative;
   padding: 65px 15px 15px;
   box-shadow: 0 0 0 5px ${Colors.darkPurple};
   background-color: ${Colors.mediumPurple};
@@ -207,7 +212,7 @@ class ContentContainer extends Component {
     const ABOUT = <AboutContainer body={ this.state.content.about.body } />
     return (
       <div>
-        { true ?
+        <UIWindowContainer> 
         <UIWindow>
         <HeaderContainer />
         <NavContainer
@@ -251,12 +256,13 @@ class ContentContainer extends Component {
               </OpacityContainer>
             : null}
         </CSSTransitionGroup>
+        <FooterContainer theDate={this.theDate} />
+        </UIWindow>
         { this.state.playingEpisode.title ?
           <PlayerContainer playingEpisode={ this.state.playingEpisode } />
         : null}
-        <FooterContainer theDate={this.theDate} />
-        </UIWindow>
-        : null}
+        </UIWindowContainer>
+
         <BackgroundContainer
           theDate={this.theDate}
           playingEpisode={ this.state.playingEpisode }

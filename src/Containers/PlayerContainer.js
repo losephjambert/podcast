@@ -21,6 +21,9 @@ const PlayerWrapper = styled.div`
   min-height: 40px;
   background-color: ${Colors.lightPurple};
   box-shadow: inset 0 0 0 5px ${Colors.darkPurple};
+  @media screen and (min-width: 600px){
+    position: absolute;
+  }
 `;
 
 const HideOrShowPlayer = styled.div`
