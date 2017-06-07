@@ -17,7 +17,7 @@ const Form = styled.form`
   background-color: ${Colors.darkPurple};
   padding: 15px;
   font-weight: 300;
-  @media screen and (min-width: 600px){
+  @media screen and (min-width: 420px){
     padding: 15px 20px 10px; 
   }
 `;

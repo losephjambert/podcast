@@ -14,10 +14,11 @@ const FooterContent = styled.ul`
   padding: 25px 0 15px;
   font-size: 10px;
   @media screen and (min-width:375px){
-    font-size: 14px;
+    font-size: 12px;
   }
-  @media screen and (min-width:375px){
+  @media screen and (min-width:600px){
     margin-bottom: 50px;
+    font-size: 14px;
   }
 `;
 

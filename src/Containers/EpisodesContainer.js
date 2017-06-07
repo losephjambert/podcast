@@ -27,7 +27,7 @@ const Episode = styled.li`
   box-shadow: 0 0 0 3px ${Colors.lightPurple};
   background-color: ${Colors.darkPurple};
   color: ${Colors.lightPurple};
-  @media screen and (min-width: 600px){
+  @media screen and (min-width: 420px){
     padding: 15px 20px 10px; 
   }
 `;

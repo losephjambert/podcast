@@ -13,7 +13,7 @@ const BackgroundWrapper = styled.div`
   color: ${Colors.darkPurple};
   background-color: white;
   display: none;
-  @media screen and (min-width: 600px){
+  @media screen and (min-width: 420px){
     display: block;
   }
 `;
