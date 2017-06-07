@@ -18,22 +18,26 @@ import FooterContainer from './FooterContainer';
 
 const UIWindowContainer = styled.div`
   position: relative;
+  oveflow: hidden;
   max-width: 600px;
-  max-width: 600px;
-  margin: 5vh auto 0;
+  max-height: 80vh;
+  margin: 5vh auto;
+  padding: 65px 15px 15px;
+  box-shadow: 0 0 0 5px ${Colors.darkPurple};
+  background-color: ${Colors.mediumPurple};
 `;
 
 const UIWindow = styled.div`
   position: relative;
-  padding: 65px 15px 15px;
-  box-shadow: 0 0 0 5px ${Colors.darkPurple};
-  background-color: ${Colors.mediumPurple};
   @media screen and (min-width:375px){
-    padding: 60px 20px 0;
+    padding: 0 20px;
   }
   @media screen and (min-width: 600px){
-    height: 80vh;
     overflow-y: scroll;
+    overflow-x: hidden;
+    max-width: 400px;
+    height: 300px;
+    margin-top: 50px;
     box-shadow: none;
     border: 5px solid ${Colors.darkPurple};
   }
@@ -44,6 +48,12 @@ const UIWindow = styled.div`
 
   &::-webkit-scrollbar-thumb {
     background: ${Colors.darkPurple};
+  }
+`;
+
+const TransitionBlock = styled.div`
+  @media screen and (min-width: 600px){
+    max-width: 400px;
   }
 `;
 
@@ -213,54 +223,56 @@ class ContentContainer extends Component {
     return (
       <div>
         <UIWindowContainer> 
-        <UIWindow>
-        <HeaderContainer />
-        <NavContainer
-          setBackgroundStyle={ this.setBackgroundStyle }
-          showRegion={ this.showRegion }
-          navItems={ this.state.navItems }
-          selectedRegion={ this.state.selectedRegion }/>
-        <CSSTransitionGroup
-          transitionName="is-showing"
-          transitionAppear={true}
-          transitionAppearTimeout={300}
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={100}>
-            {this.state.selectedRegion === "episodes" ?
-              <OpacityContainer key={"episodes"}>
-                {EPISODES}
-              </OpacityContainer>
-            : null}
-        </CSSTransitionGroup>
-        <CSSTransitionGroup
-          transitionName="is-showing"
-          transitionAppear={true}
-          transitionAppearTimeout={300}
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={100}>
-            {this.state.selectedRegion === "submit" ?
-              <OpacityContainer key={"submit"}>
-                {SUBMIT}
-              </OpacityContainer>
-            : null}
-        </CSSTransitionGroup>
-        <CSSTransitionGroup
-          transitionName="is-showing"
-          transitionAppear={true}
-          transitionAppearTimeout={300}
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={100}>
-            {this.state.selectedRegion === "about" ?
-              <OpacityContainer key={"about"}>
-                {ABOUT}
-              </OpacityContainer>
-            : null}
-        </CSSTransitionGroup>
-        <FooterContainer theDate={this.theDate} />
-        </UIWindow>
-        { this.state.playingEpisode.title ?
-          <PlayerContainer playingEpisode={ this.state.playingEpisode } />
-        : null}
+          <HeaderContainer />
+          <NavContainer
+            setBackgroundStyle={ this.setBackgroundStyle }
+            showRegion={ this.showRegion }
+            navItems={ this.state.navItems }
+            selectedRegion={ this.state.selectedRegion }/>
+          <UIWindow>
+            <TransitionBlock>
+              <CSSTransitionGroup
+                transitionName="is-showing"
+                transitionAppear={true}
+                transitionAppearTimeout={300}
+                transitionEnterTimeout={300}
+                transitionLeaveTimeout={100}>
+                  {this.state.selectedRegion === "episodes" ?
+                    <OpacityContainer key={"episodes"}>
+                      {EPISODES}
+                    </OpacityContainer>
+                  : null}
+              </CSSTransitionGroup>
+              <CSSTransitionGroup
+                transitionName="is-showing"
+                transitionAppear={true}
+                transitionAppearTimeout={300}
+                transitionEnterTimeout={300}
+                transitionLeaveTimeout={100}>
+                  {this.state.selectedRegion === "submit" ?
+                    <OpacityContainer key={"submit"}>
+                      {SUBMIT}
+                    </OpacityContainer>
+                  : null}
+              </CSSTransitionGroup>
+              <CSSTransitionGroup
+                transitionName="is-showing"
+                transitionAppear={true}
+                transitionAppearTimeout={300}
+                transitionEnterTimeout={300}
+                transitionLeaveTimeout={100}>
+                  {this.state.selectedRegion === "about" ?
+                    <OpacityContainer key={"about"}>
+                      {ABOUT}
+                    </OpacityContainer>
+                  : null}
+              </CSSTransitionGroup>
+            </TransitionBlock>
+          </UIWindow>
+          <FooterContainer theDate={this.theDate} />
+          { this.state.playingEpisode.title ?
+            <PlayerContainer playingEpisode={ this.state.playingEpisode } />
+          : null}
         </UIWindowContainer>
 
         <BackgroundContainer

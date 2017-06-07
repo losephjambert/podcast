@@ -7,6 +7,9 @@ import Fonts from '../StyleComponents/Fonts'
 const FormWrapper = styled.div`
   margin: 0 6px;
   box-shadow: 0 0 0 6px ${Colors.darkPurple};
+  @media screen and (min-width: 600px){
+    max-width: 400px;
+  }
 `;
 
 const Form = styled.form`

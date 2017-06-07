@@ -16,7 +16,15 @@ const NavList = styled.ul`
   display: flex;
   justify-content: space-between;
   align-item: center;
-  margin: 35px 0;
+  margin: 35px auto 0;
+  @media screen and (min-width: 600px){
+    position: absolute;
+    right: 25px;
+    width: 80px;
+    height: 300px;
+    display: flex;
+    flex-flow: column nowrap;
+  }
 `;
 
 const NavItem = styled.li`
@@ -27,6 +35,11 @@ const NavItem = styled.li`
   background-position: center -10px;
   background-color: ${props => props.selected ? Colors.darkPurple : Colors.lightPurple};
   color: ${props => props.selected ? Colors.lightPurple : Colors.darkPurple};
+  @media screen and (min-width: 600px){
+    // flex:${props=> `0 1 ${props.tabletSize}`};
+    // height: ${props=> props.tabletSize};
+    background-position: center -5px;
+  }
 `;
 
 const ButtonText = styled.span`
@@ -40,6 +53,9 @@ const ButtonText = styled.span`
   text-align: center;
   font-size: 12px;
   color: inherit;
+  @media screen and (min-width: 600px){
+    font-size: 8px;
+  }
 `;
 
 class NavContainer extends Component {
@@ -48,6 +64,7 @@ class NavContainer extends Component {
 
       <NavItem
       size='80px'
+      tabletSize='50px'
       style={ this.props.setBackgroundStyle(item.title === this.props.selectedRegion ? item.active : item.inactive) }
       backgroundImageURL={item.title === this.props.selectedRegion ? item.active : item.inactive}
       selected={item.title === this.props.selectedRegion ? true : false}
