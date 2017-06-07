@@ -16,6 +16,13 @@ const FixedTopBar = styled.div`
   height: 40px;
   background-color: ${Colors.lightPurple};
   box-shadow: inset 0 0 0 5px ${Colors.darkPurple};
+  @media screen and (min-width:600px){
+    box-shadow: none;
+    border-bottom: 5px solid ${Colors.darkPurple};
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 `;
 
 const HeaderContentContainer = styled.div`

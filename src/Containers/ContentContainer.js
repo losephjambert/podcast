@@ -17,13 +17,14 @@ import HeaderContainer from './HeaderContainer';
 import FooterContainer from './FooterContainer';
 
 const UIWindow = styled.div`
+  position: relative;
   max-width: 600px;
-  margin: 0 auto;
-  padding: 15px;
+  margin: 5vh auto 0;
+  padding: 65px 15px 15px;
   box-shadow: 0 0 0 5px ${Colors.darkPurple};
   background-color: ${Colors.mediumPurple};
   @media screen and (min-width:375px){
-    padding: 65px 20px 15px;
+    padding: 60px 20px 0;
   }
   @media screen and (min-width: 600px){
     height: 80vh;
