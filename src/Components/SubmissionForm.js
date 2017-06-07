@@ -9,6 +9,7 @@ const FormWrapper = styled.div`
   box-shadow: 0 0 0 6px ${Colors.darkPurple};
   @media screen and (min-width: 600px){
     max-width: 400px;
+    margin: 0 auto;
   }
 `;
 
@@ -19,6 +20,7 @@ const Form = styled.form`
   box-shadow: 0 0 0 3px ${Colors.lightPurple};
   background-color: ${Colors.darkPurple};
   padding: 15px;
+  font-weight: 300;
 `;
 
 const TextArea = styled.textarea`

@@ -9,14 +9,18 @@ const Footer = styled.footer`
 
 const FooterContent = styled.ul`
   display: flex; 
+    flex-flow: column wrap;
     justify-content: space-between;
     align-items: center;
-  margin: 50px 0 15px;
+  padding: 30px 0 0px;
   font-size: 14px;
+  @media screen and (min-width: 600px){
+    flex-flow: row wrap;
+  }
 `;
 
 const FooterItem = styled.li`
-
+  padding: 10px 0; 
 `;
 
 const LinkItem = styled.a`

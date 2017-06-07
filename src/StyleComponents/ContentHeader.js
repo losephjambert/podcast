@@ -6,7 +6,7 @@ const ContentHeader = styled.h2`
   color: ${Colors.darkPurple};
   font-weight: 500;
   text-align: center;
-  margin: 10px 0 20px;
+  margin: 25px 0 20px;
 `;
 
 

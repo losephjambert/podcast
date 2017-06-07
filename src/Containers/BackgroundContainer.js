@@ -7,11 +7,15 @@ import styled from 'styled-components'
 import Colors from '../StyleComponents/Colors'
 
 const BackgroundWrapper = styled.div`
+  display: none;
   position: fixed;
     ${props => props.sides.map((side) => `${side}:${props.fixed};`)}
     z-index: -10;
   color: ${Colors.darkPurple};
   background-color: white;
+  @media screen and (min-width: 600px){
+    display: block;
+  }
 `;
 
 const BackGroundElements = styled.div`

@@ -18,24 +18,22 @@ import FooterContainer from './FooterContainer';
 
 const UIWindowContainer = styled.div`
   position: relative;
-  oveflow: hidden;
   max-width: 600px;
-  max-height: 80vh;
-  margin: 5vh auto;
-  padding: 65px 15px 15px;
   box-shadow: 0 0 0 5px ${Colors.darkPurple};
   background-color: ${Colors.mediumPurple};
+  padding: 15px;
+  @media screen and (min-width: 600px){
+    margin: 5vh auto;
+    padding: 65px 15px 15px;
+  }
 `;
 
 const UIWindow = styled.div`
   position: relative;
-  @media screen and (min-width:375px){
-    padding: 0 20px;
-  }
   @media screen and (min-width: 600px){
     overflow-y: scroll;
     overflow-x: hidden;
-    max-width: 400px;
+    max-width: 475px;
     height: 300px;
     margin-top: 50px;
     box-shadow: none;
@@ -53,7 +51,7 @@ const UIWindow = styled.div`
 
 const TransitionBlock = styled.div`
   @media screen and (min-width: 600px){
-    max-width: 400px;
+    max-width: 475px;
   }
 `;
 
