@@ -19,13 +19,6 @@ const DescriptionWrapper = styled.div`
 `;
 
 const ExpandedDescription = styled.div`
-    &.description-appear {
-      transform: translateY(calc(100% - 43px));
-    }
-    &.description-appear.description-appear-active, &.visible {
-      transform: translateY(0%);
-      transition: transform 500ms;
-    }
     p {
        padding: 5px;
     }
@@ -69,7 +62,6 @@ class Description extends Component {
         return(
         <DescriptionWrapper>
             { this.state.expanded ?
-
             <ExpandedDescription dangerouslySetInnerHTML={{ __html: this.props.item.description}} />
             : null}
             <MoreOrLessContainer>
