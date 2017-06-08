@@ -32,15 +32,15 @@ const OpacityContainer = styled.div`
     opacity: 0.1;
   }
 
-  &.bg-appear.app-section-appear-active {
+  &.bg-appear.bg-appear-active {
     opacity: 1;
-    transition: opacity 6s ease-in;
+    transition: opacity 1s ease-in;
   }
   &.pop-up-appear {
     opacity: 0;
   }
 
-  &.pop-up-appear.app-section-appear-active {
+  &.pop-up-appear.bg-appear-active {
     opacity: 1;
     transition: opacity 2s ease-in;
   }
