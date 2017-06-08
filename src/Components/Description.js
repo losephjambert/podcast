@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Truncate from 'react-truncate-html'
 import styled from 'styled-components'
 import Colors from '../StyleComponents/Colors'
 
@@ -19,7 +18,14 @@ const DescriptionWrapper = styled.div`
     }
 `;
 
-const Expanded = styled.div`
+const ExpandedDescription = styled.div`
+    &.description-appear {
+      transform: translateY(calc(100% - 43px));
+    }
+    &.description-appear.description-appear-active, &.visible {
+      transform: translateY(0%);
+      transition: transform 500ms;
+    }
     p {
        padding: 5px;
     }
@@ -38,6 +44,8 @@ const MoreOrLess = styled.span`
     color: ${Colors.lightPurple};
     font-weight: 500;
 `;
+
+
 
 class Description extends Component {
     constructor(...args) {
@@ -60,13 +68,12 @@ class Description extends Component {
     render() {
         return(
         <DescriptionWrapper>
-            { !this.state.expanded ?
-            <Truncate lines={5} dangerouslySetInnerHTML={{ __html: this.props.item.description}}/>
-            :
-            <Expanded dangerouslySetInnerHTML={{ __html: this.props.item.description}} />
-            }
+            { this.state.expanded ?
+
+            <ExpandedDescription dangerouslySetInnerHTML={{ __html: this.props.item.description}} />
+            : null}
             <MoreOrLessContainer>
-              <MoreOrLess href='#' onClick={this.toggleLines}>{this.state.expanded ? "less" : "more"}</MoreOrLess>
+              <MoreOrLess href='#' onClick={this.toggleLines}>{this.state.expanded ? "hide" : "show"} description</MoreOrLess>
             </MoreOrLessContainer>
         </DescriptionWrapper>
     )}
