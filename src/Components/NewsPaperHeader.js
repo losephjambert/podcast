@@ -8,7 +8,6 @@ const NewsPaperHeadline = styled.h2`
   position: relative;
   padding: 25px 0;
   margin: 50px 25px;
-  max-width: 500px;
   min-width: 300px;
   text-align: center;
   line-height: 1.3em;
