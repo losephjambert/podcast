@@ -18,7 +18,7 @@ const Form = styled.form`
   padding: 15px;
   font-weight: 300;
   @media screen and (min-width: 420px){
-    padding: 15px 20px 10px; 
+    padding: 15px 20px 10px;
   }
 `;
 
@@ -33,6 +33,9 @@ const TextArea = styled.textarea`
   color: ${Colors.darkPurple};
   font-size: 16px;
   font-weight: 300;
+  &::-webkit-input-placeholder{
+      color:${Colors.darkPurple};
+  }
 `;
 
 const SubmitButton = Button.extend`
@@ -56,6 +59,7 @@ function SubmissionForm(props) {
         : null}
           <TextArea
             name="body"
+            placeholder="WHY IS NO ONE TALKING ABOUT BOHEMIAN GROVE"
             rows="10"
             onChange={ props.handleInputChange }>
           </TextArea>
