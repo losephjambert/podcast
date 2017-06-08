@@ -5,6 +5,7 @@ import BackgroundArticle from '../Components/BackgroundArticle';
 import NewsPaperHeader from '../Components/NewsPaperHeader';
 import styled from 'styled-components'
 import Colors from '../StyleComponents/Colors'
+import marked from 'marked';
 
 const BackgroundWrapper = styled.div`
   position: fixed;
@@ -82,7 +83,7 @@ const BackgroundTitle = styled.h1`
 
 const DateComponent = styled.div`
   padding: 15px 0 12px;
-  box-shadow: 
+  box-shadow:
     0 3px 0 0 ${Colors.darkPurple},
     0 -3px 0 0 ${Colors.darkPurple};
   text-transform: uppercase;
@@ -121,12 +122,12 @@ class BackgroundContainer extends Component {
           <NewsPaperWrapper>
             <BackgroundArticleWrapper>
               <BackgroundHeadline headline={this.props.backgroundLeft.headline} />
-              <BackgroundArticle body={this.props.backgroundLeft.body} />
+              <BackgroundArticle body={marked(this.props.backgroundLeft.body)} />
             </BackgroundArticleWrapper>
             <NewsPaperHeader headline={this.props.backgroundMiddle.body} />
             <BackgroundArticleWrapper>
               <BackgroundHeadline headline={this.props.backgroundRight.headline} />
-              <BackgroundArticle body={this.props.backgroundRight.body} />
+              <BackgroundArticle body={marked(this.props.backgroundRight.body)} />
             </BackgroundArticleWrapper>
           </NewsPaperWrapper>
         </BackGroundElements>
