@@ -55,10 +55,10 @@ const UIWindow = styled.div`
 class ContentContainer extends Component {
   constructor(props) {
     super(props);
-
+    this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
     this.playEpisode = this.playEpisode.bind(this);
     this.showRegion = this.showRegion.bind(this);
-    this.setBackgroundStyle = this.setBackgroundStyle.bind(this); 
+    this.setBackgroundStyle = this.setBackgroundStyle.bind(this);
     this.theDate = this.theDate.bind(this);
     this.parseMarkdown = this.parseMarkdown.bind(this)
 
@@ -105,7 +105,7 @@ class ContentContainer extends Component {
           "body":""
         },
       },
-      "width": "",
+      "width": window.innerWidth,
       "height": "",
       "canDrag": false
     };
@@ -117,6 +117,7 @@ class ContentContainer extends Component {
   }
 
   componentWillMount(){
+    window.addEventListener('resize', this.handleWindowSizeChange);
     axios
       .get(`https://trust-issues-api.herokuapp.com/rss`)
       .catch(error => console.error(error))
@@ -149,6 +150,11 @@ class ContentContainer extends Component {
       this.setState({content});
     }
   }
+
+  handleWindowSizeChange() {
+    this.setState({ width: window.innerWidth });
+  };
+
 
   showRegion(selectedRegion,index) {
     this.setState({
@@ -208,78 +214,123 @@ class ContentContainer extends Component {
         break;
     }
 
-    if(dd<10) { dd='0'+dd } 
+    if(dd<10) { dd='0'+dd }
 
-    if(mm<10) { mm='0'+mm } 
+    if(mm<10) { mm='0'+mm }
 
     return `${mm}—${dd}—${yyyy}`
   }
 
   render() {
+    const isMobile = this.state.width <= 420;
     const EPISODES = <EpisodesContainer RSS={ this.state.RSS } playEpisode={ this.playEpisode } currentEpisodeIndex={ this.state.playingEpisode.number ? this.state.playingEpisode.number : null} />
     const SUBMIT = <SubmissionContainer description={ this.state.content.submissionDescription.body } />
     const ABOUT = <AboutContainer body={ this.state.content.about.body } />
     return (
       <div>
-        <Draggable handle={".handle"}>
-          <UIWindowContainer> 
-          <UIWindow>
-          <HeaderContainer/>
-          <NavContainer
-            setBackgroundStyle={ this.setBackgroundStyle }
-            showRegion={ this.showRegion }
-            navItems={ this.state.navItems }
-            selectedRegion={ this.state.selectedRegion }/>
-          <CSSTransitionGroup
-            transitionName="is-showing"
-            transitionAppear={true}
-            transitionAppearTimeout={300}
-            transitionEnterTimeout={300}
-            transitionLeaveTimeout={100}>
-              {this.state.selectedRegion === "episodes" ?
-                <OpacityContainer key={"episodes"}>
-                  {EPISODES}
-                </OpacityContainer>
-              : null}
-          </CSSTransitionGroup>
-          <CSSTransitionGroup
-            transitionName="is-showing"
-            transitionAppear={true}
-            transitionAppearTimeout={300}
-            transitionEnterTimeout={300}
-            transitionLeaveTimeout={100}>
-              {this.state.selectedRegion === "submit" ?
-                <OpacityContainer key={"submit"}>
-                  {SUBMIT}
-                </OpacityContainer>
-              : null}
-          </CSSTransitionGroup>
-          <CSSTransitionGroup
-            transitionName="is-showing"
-            transitionAppear={true}
-            transitionAppearTimeout={300}
-            transitionEnterTimeout={300}
-            transitionLeaveTimeout={100}>
-              {this.state.selectedRegion === "about" ?
-                <OpacityContainer key={"about"}>
-                  {ABOUT}
-                </OpacityContainer>
-              : null}
-          </CSSTransitionGroup>
-          <FooterContainer theDate={this.theDate} />
-          </UIWindow>
-          { this.state.playingEpisode.title ?
-            <PlayerContainer playingEpisode={ this.state.playingEpisode } />
+        { isMobile ?
+        <UIWindowContainer>
+        <UIWindow>
+        <HeaderContainer/>
+        <NavContainer
+          setBackgroundStyle={ this.setBackgroundStyle }
+          showRegion={ this.showRegion }
+          navItems={ this.state.navItems }
+          selectedRegion={ this.state.selectedRegion }/>
+          {this.state.selectedRegion === "episodes" ?
+              EPISODES
           : null}
-          </UIWindowContainer>
-        </Draggable>
-        <BackgroundContainer
-          theDate={this.theDate}
-          playingEpisode={ this.state.playingEpisode }
-          marquee={ this.state.content.marquee }
-          backgroundLeft={ this.state.content.backgroundLeft }
-          backgroundRight={ this.state.content.backgroundRight }
-          backgroundMiddle={ this.state.content.backgroundMiddle } />
+          {this.state.selectedRegion === "submit" ?
+              SUBMIT
+          : null}
+          {this.state.selectedRegion === "about" ?
+              ABOUT
+          : null}
+        <FooterContainer theDate={this.theDate} />
+        </UIWindow>
+        { this.state.playingEpisode.title ?
+          <PlayerContainer playingEpisode={ this.state.playingEpisode } />
+        : null}
+        </UIWindowContainer>
+        :
+        <CSSTransitionGroup
+          transitionName="bg"
+          transitionAppear={true}
+          transitionAppearTimeout={300}
+          transitionEnter={false}
+          transitionLeave={false}>
+          <OpacityContainer key={"content"}>
+            <CSSTransitionGroup
+              transitionName="pop-up"
+              transitionAppear={true}
+              transitionAppearTimeout={1800}
+              transitionEnter={false}
+              transitionLeave={false}>
+            <OpacityContainer key={"pop-up"}>
+              <Draggable handle={".handle"}>
+                <UIWindowContainer>
+                <UIWindow>
+                <HeaderContainer/>
+                <NavContainer
+                  setBackgroundStyle={ this.setBackgroundStyle }
+                  showRegion={ this.showRegion }
+                  navItems={ this.state.navItems }
+                  selectedRegion={ this.state.selectedRegion }/>
+                <CSSTransitionGroup
+                  transitionName="is-showing"
+                  transitionAppear={true}
+                  transitionAppearTimeout={300}
+                  transitionEnterTimeout={300}
+                  transitionLeaveTimeout={100}>
+                    {this.state.selectedRegion === "episodes" ?
+                      <OpacityContainer key={"episodes"}>
+                        {EPISODES}
+                      </OpacityContainer>
+                    : null}
+                </CSSTransitionGroup>
+                <CSSTransitionGroup
+                  transitionName="is-showing"
+                  transitionAppear={true}
+                  transitionAppearTimeout={300}
+                  transitionEnterTimeout={300}
+                  transitionLeaveTimeout={100}>
+                    {this.state.selectedRegion === "submit" ?
+                      <OpacityContainer key={"submit"}>
+                        {SUBMIT}
+                      </OpacityContainer>
+                    : null}
+                </CSSTransitionGroup>
+                <CSSTransitionGroup
+                  transitionName="is-showing"
+                  transitionAppear={true}
+                  transitionAppearTimeout={300}
+                  transitionEnterTimeout={300}
+                  transitionLeaveTimeout={100}>
+                    {this.state.selectedRegion === "about" ?
+                      <OpacityContainer key={"about"}>
+                        {ABOUT}
+                      </OpacityContainer>
+                    : null}
+                </CSSTransitionGroup>
+                <FooterContainer theDate={this.theDate} />
+                </UIWindow>
+                { this.state.playingEpisode.title ?
+                  <PlayerContainer playingEpisode={ this.state.playingEpisode } />
+                : null}
+                </UIWindowContainer>
+              </Draggable>
+            </OpacityContainer>
+            </CSSTransitionGroup>
+            <BackgroundContainer
+              theDate={this.theDate}
+              playingEpisode={ this.state.playingEpisode }
+              marquee={ this.state.content.marquee }
+              backgroundLeft={ this.state.content.backgroundLeft }
+              backgroundRight={ this.state.content.backgroundRight }
+              backgroundMiddle={ this.state.content.backgroundMiddle } />
+          </OpacityContainer>
+        </CSSTransitionGroup>
+        }
       </div>
     )
   }
