@@ -256,7 +256,7 @@ class ContentContainer extends Component {
         <CSSTransitionGroup
           transitionName="bg"
           transitionAppear={true}
-          transitionAppearTimeout={300}
+          transitionAppearTimeout={800}
           transitionEnter={false}
           transitionLeave={false}>
           <OpacityContainer key={"content"}>
