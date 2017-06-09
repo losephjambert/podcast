@@ -20,9 +20,10 @@ const Episodes = styled.ul`
 const Episode = styled.li`
   display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
   padding: 15px 0 10px;
+  min-height: 175px;
   box-shadow: 0 0 0 3px ${Colors.lightPurple};
   background-color: ${Colors.darkPurple};
   color: ${Colors.lightPurple};
@@ -33,7 +34,7 @@ const Episode = styled.li`
 
 const PlayButton = Button.extend`
   padding: 15px;
-  margin: 10px 0;
+  margin: auto 0 15px 0;
   min-width: 130px;
   font-weight: 500;
   font-size: 16px;
