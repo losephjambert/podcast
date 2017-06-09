@@ -23,7 +23,6 @@ const Episode = styled.li`
     justify-content: center;
     align-items: center;
   padding: 15px 0 10px;
-  margin: 25px 0;
   box-shadow: 0 0 0 3px ${Colors.lightPurple};
   background-color: ${Colors.darkPurple};
   color: ${Colors.lightPurple};
