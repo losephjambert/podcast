@@ -3,8 +3,9 @@ import Marquee from '../Components/Marquee';
 import BackgroundHeadline from '../Components/BackgroundHeadline';
 import BackgroundArticle from '../Components/BackgroundArticle';
 import NewsPaperHeader from '../Components/NewsPaperHeader';
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Colors from '../StyleComponents/Colors'
+import Rotate360 from '../StyleComponents/Rotate360'
 import marked from 'marked';
 
 const BackgroundWrapper = styled.div`
@@ -23,17 +24,16 @@ const BackGroundElements = styled.div`
   display: flex;
     flex-flow: column nowrap;
   min-width: 1024px;
-  max-width: 1400px;
   height: 100%;
-  margin: 0 auto;
 `;
 
 const BackgroundArticleWrapper = styled.div`
+  margin: 0 50px 50px;
   padding: 25px;
-  box-shadow: 0 0 0 3px ${Colors.darkPurple};
+  box-shadow: 0 0 0 2px ${Colors.darkPurple};
   overflow-y: scroll;
-  flex: 0 1 33.3333333%;
-  max-width: 500px;
+  flex: 0 1 50%;
+  max-width: 800px;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -60,7 +60,7 @@ const BackgroundTitle = styled.h1`
     justify-content: center;
     align-items: center;
   text-transform: uppercase;
-  font-size: 5.4vmax;
+  font-size: 6.4vmin;
   font-weight: 500;
   text-decoration: underline;
   &::before,
@@ -70,30 +70,33 @@ const BackgroundTitle = styled.h1`
       background-size: 90px;
       background-position: center;
       background-repeat: no-repeat;
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
   }
   &::before{
-    margin: 0 auto 0 50px;
+    margin: 0 auto 0 57px;
+    animation: ${Rotate360} 35s linear infinite;
   }
   &::after{
-    margin: 0 50px 0 auto;
+    margin:  0 57px 0 auto;
+    animation: ${Rotate360} 35s linear infinite reverse;
   }
 `;
 
 const DateComponent = styled.div`
   padding: 15px 0 12px;
   box-shadow:
-    0 3px 0 0 ${Colors.darkPurple},
-    0 -3px 0 0 ${Colors.darkPurple};
+    0 2px 0 0 ${Colors.darkPurple},
+    0 -2px 0 0 ${Colors.darkPurple};
   text-transform: uppercase;
   letter-spacing: 1px;
 `;
 
 const MarqueeHeadline = styled.div`
+  margin: 25px 0;
   padding: 15px 0 12px;
   text-transform: uppercase;
-  font-size: 6vmax;
+  font-size: 6vmin;
   font-weight: 300;
 `;
 
