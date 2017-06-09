@@ -20,6 +20,16 @@ const PlayerButton = Button.extend`
   height:75px;
   color: ${(props) => props.playing ? Colors.lightPurple : Colors.darkPurple};
   background-color: ${(props) => props.playing ? Colors.darkPurple : Colors.lightPurple};
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center;
+  text-indent: -9999px;
+  &[type=play]{
+    background-image: ${(props)=> props.playing ? 'url(./Assets/images/play-active.svg)' : 'url(./Assets/images/play-inactive.svg)'}
+  }
+  &[type=pause]{
+    background-image: ${(props)=> props.playing ? 'url(./Assets/images/pause-active.svg)' : 'url(./Assets/images/pause-inactive.svg)'}
+  }
 `
 const ButtonGroup = styled.div`
   display:flex;
