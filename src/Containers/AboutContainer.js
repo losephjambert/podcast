@@ -8,6 +8,7 @@ import Title from '../StyleComponents/Title'
 const About = styled.div`
   margin: 0 6px;
   box-shadow:  0 0 0 6px ${Colors.darkPurple};
+  a{color: ${Colors.lightPurple}}
 `;
 
 
