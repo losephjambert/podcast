@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Marquee from '../Components/Marquee';
 import BackgroundHeadline from '../Components/BackgroundHeadline';
 import BackgroundArticle from '../Components/BackgroundArticle';
-import NewsPaperHeader from '../Components/NewsPaperHeader';
+import BackgroundMiddleHeader from '../Components/BackgroundMiddleHeader';
 import styled, { keyframes } from 'styled-components'
 import Colors from '../StyleComponents/Colors'
 import Rotate360 from '../StyleComponents/Rotate360'
@@ -45,7 +45,7 @@ const BackgroundArticleWrapper = styled.div`
   }
 `;
 
-const NewsPaperWrapper = styled.div`
+const BackgroundMiddleWrapper = styled.div`
   display: flex;
     justify-content: space-between;
   padding: 0 10px 10px;
@@ -122,17 +122,17 @@ class BackgroundContainer extends Component {
           <MarqueeHeadline className="marquee3k" data-speed="0.15" data-pausable="true">
             <Marquee headline={this.props.marquee.body} />
           </MarqueeHeadline>
-          <NewsPaperWrapper>
+          <BackgroundMiddleWrapper>
             <BackgroundArticleWrapper>
               <BackgroundHeadline headline={this.props.backgroundLeft.headline} />
               <BackgroundArticle body={marked(this.props.backgroundLeft.body)} />
             </BackgroundArticleWrapper>
-            <NewsPaperHeader headline={this.props.backgroundMiddle.body} />
+            <BackgroundMiddleHeader headline={this.props.backgroundMiddle.body} />
             <BackgroundArticleWrapper>
               <BackgroundHeadline headline={this.props.backgroundRight.headline} />
               <BackgroundArticle body={marked(this.props.backgroundRight.body)} />
             </BackgroundArticleWrapper>
-          </NewsPaperWrapper>
+          </BackgroundMiddleWrapper>
         </BackGroundElements>
       </BackgroundWrapper>
     );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import Colors from '../StyleComponents/Colors'
 
-const NewsPaperHeadline = styled.h2`
+const BackgroundMiddleHeadline = styled.h2`
   display: flex;
     justify-content: center;
   position: relative;
@@ -19,6 +19,7 @@ const NewsPaperHeadline = styled.h2`
     content: '';
     position: absolute;
     width: 50%;
+    left:25%;
     height: 3px;
     background-color: ${Colors.darkPurple};
   }
@@ -31,7 +32,7 @@ const NewsPaperHeadline = styled.h2`
 `;
 
 
-class NewsPaperHeader extends Component {
+class BackgroundMiddleHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,9 +41,9 @@ class NewsPaperHeader extends Component {
 
   render() {
     return (
-      <NewsPaperHeadline>{this.props.headline}</NewsPaperHeadline>
+      <BackgroundMiddleHeadline>{this.props.headline}</BackgroundMiddleHeadline>
     );
   }
 }
 
-export default NewsPaperHeader;
+export default BackgroundMiddleHeader;
