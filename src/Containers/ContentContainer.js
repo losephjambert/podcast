@@ -38,6 +38,7 @@ const UIWindow = styled.div`
   }
   @media screen and (min-width: 420px){
     height: 80vh;
+    max-height: 800px;
     overflow-y: scroll;
     box-shadow: none;
     border: 5px solid ${Colors.darkPurple};

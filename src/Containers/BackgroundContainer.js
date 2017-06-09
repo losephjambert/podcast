@@ -72,14 +72,14 @@ const BackgroundTitle = styled.h1`
       background-repeat: no-repeat;
     width: 90px;
     height: 90px;
-    border-radius: 100%;
   }
   &::before{
     margin: 0 auto 0 57px;
-    animation: ${Rotate360} 25s linear infinite;
+    animation: ${Rotate360} 35s linear infinite;
   }
   &::after{
     margin:  0 57px 0 auto;
+    animation: ${Rotate360} 35s linear infinite reverse;
   }
 `;
 
