@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import Colors from '../StyleComponents/Colors'
 
 const DescriptionWrapper = styled.div`
-    margin-bottom: 40px;
     padding: 0 25px;
     font-size: 12px;
     line-height: 1.3em;
@@ -24,18 +23,12 @@ const ExpandedDescription = styled.div`
     }
 `;
 
-const MoreOrLessContainer = styled.span`
-    display: flex;
-        justify-content: center;
-        align-items: center;
-    position: relative;
-`;
-
 const MoreOrLess = styled.span`
-    position: absolute;
-    bottom: -20px;
+    display:block;
     color: ${Colors.lightPurple};
     font-weight: 500;
+    padding: 10px 0px;
+    &:hover{cursor: pointer;}
 `;
 
 
@@ -64,9 +57,7 @@ class Description extends Component {
             { this.state.expanded ?
             <ExpandedDescription dangerouslySetInnerHTML={{ __html: this.props.item.description}} />
             : null}
-            <MoreOrLessContainer>
-              <MoreOrLess href='#' onClick={this.toggleLines}>{this.state.expanded ? "hide" : "show"} description</MoreOrLess>
-            </MoreOrLessContainer>
+          <MoreOrLess href='#' onClick={this.toggleLines}>{this.state.expanded ? "hide" : "show"} description</MoreOrLess>
         </DescriptionWrapper>
     )}
 }

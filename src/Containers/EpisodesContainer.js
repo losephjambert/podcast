@@ -6,7 +6,7 @@ import ContentHeader from '../StyleComponents/ContentHeader'
 import Description from '../Components/Description';
 
 const Title = styled.div`
-  margin-bottom: 15px;
+  margin: 10px 0px;
   font-size: 22px;
   text-align: center;
   font-weight: 500;
@@ -28,7 +28,7 @@ const Episode = styled.li`
   background-color: ${Colors.darkPurple};
   color: ${Colors.lightPurple};
   @media screen and (min-width: 420px){
-    padding: 15px 20px 10px; 
+    padding: 15px 20px 10px;
   }
 `;
 
