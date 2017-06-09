@@ -21,14 +21,16 @@ const PlayerButton = Button.extend`
   color: ${(props) => props.playing ? Colors.lightPurple : Colors.darkPurple};
   background-color: ${(props) => props.playing ? Colors.darkPurple : Colors.lightPurple};
   background-repeat: no-repeat;
-  background-size: 40px;
-  background-position: center;
+  background-size: 160px;
   text-indent: -9999px;
+  transition: 0ms;
   &[type=play]{
-    background-image: ${(props)=> props.playing ? 'url(./Assets/images/play-active.svg)' : 'url(./Assets/images/play-inactive.svg)'}
+    background-image: url(./Assets/images/play-icons.svg);
+    background-position: ${(props)=> props.playing ? '-104px 19px;' : '23px -102px;'}
   }
   &[type=pause]{
-    background-image: ${(props)=> props.playing ? 'url(./Assets/images/pause-active.svg)' : 'url(./Assets/images/pause-inactive.svg)'}
+    background-image: url(./Assets/images/pause-icons.svg);
+    background-position: ${(props)=> props.playing ? '-105px 19px;' : '19px -102px;'}
   }
 `
 const ButtonGroup = styled.div`
