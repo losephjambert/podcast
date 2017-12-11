@@ -19,6 +19,7 @@ const Form = styled.form`
   font-weight: 300;
   @media screen and (min-width: 420px){
     padding: 15px 20px 10px;
+    min-width: 312px;
   }
 `;
 
@@ -53,10 +54,15 @@ function SubmissionForm(props) {
   return (
     <FormWrapper>
       <Form id="emailForm" onSubmit={ props.handleSubmit }>
-        <p>{ props.description }</p>
         { props.submissionResponse.message ?
           <span className={ props.submissionResponse.class }>{ props.submissionResponse.message }</span>
-        : null}
+        : <p>{ props.description }</p>}
+          <TextArea
+            name="contactEmail"
+            placeholder="YOUR EMAIL ADDRESS"
+            rows="1"
+            onChange={ props.handleInputChange }>
+          </TextArea>
           <TextArea
             name="body"
             placeholder="WHY IS NO ONE TALKING ABOUT BOHEMIAN GROVE"

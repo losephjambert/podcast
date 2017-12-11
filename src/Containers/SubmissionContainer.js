@@ -46,6 +46,7 @@ class SubmissionContainer extends Component {
       axios
         .post(`https://trust-issues-api.herokuapp.com/send-email`, {
           subject: `New Submission from wehavetrustissues.com`,
+          contactEmail: this.state.contactEmail || null,
           body: this.state.body
         })
         .catch(error => console.error(error))
